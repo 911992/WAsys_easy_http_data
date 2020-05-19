@@ -9,7 +9,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 ![tldr diagram](./_docs/diagrams/social_media_image.svg)
 
 ## Revision History
-Latest: v0.1.1 (May 19, 2020)  
+Latest: v0.1.2 (May 20, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -22,7 +22,7 @@ Please refer to [release_note.md](./release_note.md) file
 **Note:** dependency to WAsys_generic_object_pool lib is optional. It means user, and/or HTTP wrapper modules may or may not utilize the poolable types(but recommended).
 
 ## Shall I Read Stuffs Ahead?
-You are probably looking for some sample and fast API explination, so if yes(if you are a end-user), then `false`, you don't need to read and understand the content.
+You are probably looking for some sample and fast API explination, so if yes(if you are a end-user), then `false`, you don't need to read and understand the content, instead you may also check [WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test) repo, that contains some sample of this lib.
 
 But if you like to implement the lib/API for your(or one) HTTP Server COntainer, or beter would like to contribute, so you are welcome.  
 
@@ -165,11 +165,11 @@ Make sure you have the correct **HTTP Server Container** component that complete
 Associate the real HTTP request handler to `Request_Data_Handler` (or its adapter types), and it's done! Have your POJOs implement `Fillable_Object`(or extend from its adapters), and enjoy HTTP pojo data!
 
 ## Sample Usage
-Hold on! so soon. Working on some!
+* **[WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test)** Sample implementation of this lib, for testing purpose(not a real HTTP Server Container!)  
 
 ## TODOs
 - [ ] Documenting the source code(maybe next decade :D, it hurts!)
-- [ ] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work.
+- [x] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work. (you may find it [here](https://github.com/911992/WAsys_pojo_http_data_test))
 - [ ] Servlet 3.0 Wrapper
 - [ ] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()`
 

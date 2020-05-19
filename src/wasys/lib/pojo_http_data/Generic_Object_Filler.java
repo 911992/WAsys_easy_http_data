@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM | last edit: May 14, 2020
     @author https://github.com/911992
  
 History:
+    0.1.2 (20200520)
+        • Fixed the wrong type check at read_and_set_param (Poolable_Object -> Fillable_Object)
+        • Removed the redundant Poolable_Object type import
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data;
@@ -20,7 +23,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Vector;
-import wasys.lib.generic_object_pool.api.Poolable_Object;
 import wasys.lib.pojo_http_data.api.Field_Fill_Result;
 import wasys.lib.pojo_http_data.api.Fillable_Object;
 import wasys.lib.pojo_http_data.api.Fillable_Object_Field_Signature;
@@ -114,7 +116,7 @@ public class Generic_Object_Filler {
     private static int read_and_set_param(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj, Fillable_Object_Field_Signature_Cache arg_field_sig_cache) {
         Fillable_Object_Field_Signature _fsig = arg_field_sig_cache.getField_signature();
         Class _type = _fsig.getType();
-        if (Poolable_Object.class.isAssignableFrom(_type)) {
+        if (Fillable_Object.class.isAssignableFrom(_type)) {
             return FIELD_SET_IGNORED_FILLABLE_TYPE;
         }
         String _param_name = _fsig.getParam_name();

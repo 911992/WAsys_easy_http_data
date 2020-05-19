@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>17</zoom_level>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>170</x>
+      <y>391</y>
+      <w>289</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>GET /path?user=
+style=wordwrap
+fg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>952</x>
+      <y>391</y>
+      <w>170</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>HTTP/1.1
+style=wordwrap
+fg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>391</x>
+      <y>391</y>
+      <w>136</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>911992
+style=wordwrap
+fg=blue
+halign=right</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>510</x>
+      <y>391</y>
+      <w>136</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>&amp;proj=
+style=wordwrap
+halign=left
+fg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>612</x>
+      <y>391</y>
+      <w>374</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>WAsys_POJO_http_data
+style=wordwrap
+fg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>629</x>
+      <y>425</y>
+      <w>51</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+lw=3
+bg=dark_gray
+fg=gray</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>408</x>
+      <y>493</y>
+      <w>493</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>:My_Entity
+--
+fg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>544</x>
+      <y>527</y>
+      <w>204</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>911992
+style=wordwrap
+fg=blue
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>170</x>
+      <y>340</y>
+      <w>918</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>*HTTP Request Param, To POJO*
+style=wordwrap
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>544</x>
+      <y>561</y>
+      <w>357</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>WAsys_POJO_http_data
+style=wordwrap
+halign=left
+fg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>408</x>
+      <y>527</y>
+      <w>204</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>user := 
+style=wordwrap
+halign=left
+fg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>408</x>
+      <y>561</y>
+      <w>204</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>proj := 
+style=wordwrap
+halign=left
+fg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

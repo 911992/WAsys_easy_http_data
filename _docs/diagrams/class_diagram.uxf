@@ -1,0 +1,2399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>456</x>
+      <y>753</y>
+      <w>285</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>wasys::lib::generic_object_pool
+--
+bg=#eeffff
+layer=-200</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>462</x>
+      <y>762</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+WAsys Generic Object Pool
+bg=#ccffff
+layer=-190</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>456</x>
+      <y>102</y>
+      <w>591</w>
+      <h>645</h>
+    </coordinates>
+    <panel_attributes>wasys::lib::pojo_http_data
+--
+bg=#ffffee
+layer=-200</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>777</y>
+      <w>57</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>813</y>
+      <w>57</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+bg=#ccffff</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>615</x>
+      <y>804</y>
+      <w>48</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>Object_Pool
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>615</x>
+      <y>768</y>
+      <w>48</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>Object_Factory
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>822</x>
+      <y>240</y>
+      <w>201</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Fillable_Object
+--
+--
++fill_mode(void):Object_Fill_Mode {const}
++part_io_stream_mode(void):Part_Field_Stream_Mode
++generate_result_err_msg(void):bool
++set_object_fill_result(:Object_Fill_Result):void
++set_field_fill_result(:String,:int,:Field_Fill_Result):void
++set_field_fill_result_err_msg(:String,:int,:String[]):void
++get_type_descriptor(void):Fillable_Object_Descriptor
++prepare_for_part(arg_param_name:String,
+                  arg_param_idx:int,
+                  arg_part_filename:String,
+                  arg_part_size:long
+                  arg_part_mime:String):boolean
++part_stream(:String,:int,:InputStream):void
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>468</x>
+      <y>801</y>
+      <w>48</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Poolable_Object
+bg=#ccffff
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>831</x>
+      <y>129</y>
+      <w>201</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>template=A: Object
+&lt;&lt;interface&gt;&gt;
+Request_Data_Handler
+--
+--
++get_param(:String):String
++get_param_at(:String,:int):String
++get_params(:String):String[]
++param_count(:String):int
++is_multipart_request(void):boolean
++get_part_filename(:String):String
++get_part_filename_at(:String,:int):String
++get_part_mime_type(:String):String
++get_part_mime_type_at(:String,:int):String
++get_part_size(:String):long
++get_part_size_at(:String,:int):long
++stream_part(:String,:OutputStream):long
++stream_part_at(:String,:int,:OutputStream):long
++get_part_stream(:String):InputStream
++get_part_stream_at(:String,:int):InputStream
++fill_object(:Fillable_Object):void
++get_associated_request(void):A
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>471</x>
+      <y>648</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*A*
+transparency=0
+layer=1
+bg=orange
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>777</y>
+      <w>78</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>/Poolable_Object_Adapter/
+--
+--
+bg=#ccffff
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>489</x>
+      <y>789</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>522</x>
+      <y>801</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*B*
+transparency=0
+layer=1
+lw=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>804</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>699</x>
+      <y>549</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*B*
+transparency=0
+layer=1
+lw=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>543</y>
+      <w>30</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>80.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>228</y>
+      <w>9</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>330</y>
+      <w>75</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+Object_Fill_Mode
+--
+Reflection_Type_Fields
+Type_Manipulator
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>615</y>
+      <w>222</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Fillable_Object_Manipulator
+--
+--
++get_field_signatures(void):Fillable_Object_Field_Signature[] {const}
++field_set_mode():Object_Fill_Mode
++set_field_value(:String,:int,:Object):void
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>858</x>
+      <y>315</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>819</x>
+      <y>651</y>
+      <w>222</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>annotations
+--
+bg=#ccffcc
+layer=-198</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>444</y>
+      <w>147</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;entity&gt;&gt;
+Fillable_Object_Field_Signature
+{immutable}
+--
++param_name:String
++param_idx:int := 0
++entity_field_name:String
++type:Class
++nullable:boolean := false
++min_len_val:double := Double.NEGATIVE_INFINITY
++max_len_val:double := Double.POSITIVE_INFINITY
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>834</x>
+      <y>459</y>
+      <w>207</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Fillable_Object_Adapter/
+--
+_-type_parse_cache:Object := null_ {@No_Param}
+_-DEFAULT_MSG_SETTER:_Err_Message_Setter_ {@No_Param}
+_-SETTER_MSG_SETTER:_Err_Message_Setter_ {@No_Param}
+-err_msg_need_nl:bool := false {@No_Param}
+-err_msg:StringBuilder := null {@No_Param}
+-msg_setter:_Err_Message_Setter := SETTER_MSG_SETTER {@No_Param}
++object_field_result:Object_Fill_Result := null {@No_Param}
+-last_known_priority_fields_fill:Field_Fill_Result := null {@No_Param}
+--
+-set_msg_setter(:_Err_Message_Setter):void
++get_fields_fill_msg(void):StringBuilder
+#err_msg_new_line(void):String
++was_object_filling_success(void):bool
++has_object_filling_happened(void):bool
++get_object_field_result(void):Object_Fill_Result
++set_object_fill_result(:Object_Fill_Result):void
+#set_field_fill_result_child(:String,:int,:Field_Fill_Result):void
++set_field_fill_result(:String,:int,:Field_Fill_Result):void {final}
++set_field_fill_result_err_msg(:String,:int,:String[]):void
++get_type_descriptor(void):Fillable_Object_Descriptor
++get_field_signatures(void):Fillable_Object_Field_Signature[]
+#is_object_in_a_valid_state(void):bool {final}
++_api_ex_set_type_parse_result(:Object):void {final}
++_api_ex_get_type_parse_result:(void):Object {final}
++reset_fill_state(void):void {final}
++close(void):void
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>834</x>
+      <y>315</y>
+      <w>9</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>411</y>
+      <w>159</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+_Err_Message_Setter
+{private} {static}
+--
+--
+~add_err_message(:Fillable_Object_Adapter,
+                 :String):void
+
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>861</x>
+      <y>438</y>
+      <w>9</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=(+)-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>438</y>
+      <w>9</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>438</y>
+      <w>9</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>825</x>
+      <y>660</y>
+      <w>141</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;annotation&gt;&gt;
+Field_Definition
+--
++param_name:String
++param_idx:int := 0
++nullable:bool := false
++min_len_val:double := Double.NEGATIVE_INFINITY
++max_len_val:double := Double.POSITIVE_INFINITY
++setter_method_name
+        :String := null
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>492</y>
+      <w>42</w>
+      <h>129</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>315</y>
+      <w>9</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;1000.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>462</y>
+      <w>150</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;entity&gt;&gt;
+Fillable_Object_Field_Signature_Cache
+{immutable}
+--
+~field_signature:Fillable_Object_Field_Signature
+~type_field:Field
+~setter_method:Method
+
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>450</y>
+      <w>36</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>579</y>
+      <w>264</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Fillable_Object_Parser
+--
+_-FILLABLE_TYPES:Class[] {final}_
+_-INHERITABLE_FILLABLE_TYPES:Class[] {final}_
+_-ctx:Fillable_Object_Signature_Context:=Fillable_Object_Signature_Context::get_instance()_
+--
+-Fillable_Object_Parser(void):Fillable_Object_Parser
+_~find_or_parse_object(:Fillable_Object):Fillable_Object_Parse_Result_
+_-parse_object(:Fillable_Object):Fillable_Object_Parse_Result_
+_-field_should_be_ignorred(:Field):bool_
+_-is_field_fillable(:Field):bool_
+_-parse_field(Field):Fillable_Object_Field_Signature_
+_-setter_method_from_field(:Field,:Class):Method_
+_-find_method(arg_type:Class,arg_method_name:String,arg_input_type:Class):Method_
+_-find_marked_setter_method(arg_type:Class,arg_param:String,arg_param_type:Class):Method_
+_-find_field(arg_type:Class,arg_field_name:String):Field_
+_-get_all_fields(:Class,arg_to_ctx:Vector&lt;Field&gt;):int_
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>387</y>
+      <w>168</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;entity&gt;&gt;
+Fillable_Object_Parse_Result
+{immutable}
+--
+~obj_type:Class
+~fields:Vector&lt;Fillable_Object_Field_Signature_Cache&gt;
+
+
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>423</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>471</x>
+      <y>423</y>
+      <w>39</w>
+      <h>219</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+m2=&lt;&lt;creates&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;700.0;110.0;700.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>498</y>
+      <w>33</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+m2=&lt;&lt;creates&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>642</x>
+      <y>495</y>
+      <w>33</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+m2=&lt;&lt;creates&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>513</x>
+      <y>687</y>
+      <w>297</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;singleton&gt;&gt;
+Fillable_Object_Signature_Context
+{immutable}
+--
+_-INSTANCE:Fillable_Object_Signature_Context := new Fillable_Object_Signature_Context() {final}_
+-ctx:Vector&lt;Fillable_Object_Parse_Result&gt; := new Vector&lt;Fillable_Object_Parse_Result&gt;(7,7) {final}
+--
+_+get_instance(void):Fillable_Object_Signature_Context_
+~Fillable_Object_Signature_Context(void):Fillable_Object_Signature_Context
+~add_result_to_ctx(:Fillable_Object_Parse_Result):void {synchronized}
+~find_result(:Fillable_Object):Fillable_Object_Parse_Result
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>660</y>
+      <w>9</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>660</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>423</y>
+      <w>57</w>
+      <h>282</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=&lt;&lt;holds&gt;&gt;</panel_attributes>
+    <additional_attributes>170.0;910.0;10.0;910.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>816</x>
+      <y>111</y>
+      <w>228</w>
+      <h>633</h>
+    </coordinates>
+    <panel_attributes>api
+--
+bg=#ccffcc
+layer=-199</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>288</y>
+      <w>321</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Generic_Object_Filler
+--
+_-FIELD_SET_IGNORED_FILLABLE_TYPE:int=0 {final}_
+_-FIELD_SET_SUCCESS_WITH_DATA:int=1 {final}_
+_-FIELD_SET_SUCCESS_NO_DATA:int=2 {final}_
+_-FIELD_SET_FAILED:int=3 {final}_
+--
+-Generic_Object_Filler(void):Generic_Object_Filler
+_+process_request(:Request_Data_Handler,:Fillable_Object):void_
+_-process_request(:Request_Data_Handler,:Fillable_Object,:Vector&lt;Class&gt;):void_
+_-read_and_set_param(:Request_Data_Handler,:Fillable_Object,:Fillable_Object_Field_Signature_Cache):int_
+_-set_field_data(:Fillable_Object,:Fillable_Object_Field_Signature_Cache,:Object,:Object_Fill_Mode):bool_
+_-result_event(:Fillable_Object,:Fillable_Object_Field_Signature,:Field_Fill_Result):void_
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>288</y>
+      <w>48</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>345</y>
+      <w>33</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;90.0;50.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>468</x>
+      <y>354</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*A*
+transparency=0
+layer=1
+bg=orange
+lw=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>651</y>
+      <w>30</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>795</x>
+      <y>264</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*B*
+transparency=0
+layer=1
+lw=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>249</y>
+      <w>39</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;50.0;110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>822</x>
+      <y>120</y>
+      <w>219</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>container
+--
+bg=#ccffff
+layer=-198</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>342</x>
+      <y>102</y>
+      <w>108</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>*Document*
+-.
+Project: POJO HTTP Data
+Title: Class Diagram
+Doc version: 0.1(May 10, 2020)
+Repo:
+https://github.com/911992/WAsys_pojo_http_data
+Author(s):
+911992
+
+-
+*Meta Legends*
+-.
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>342</x>
+      <y>255</y>
+      <w>108</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>*Version History*
+-
+*v0.1*
+(May 10, 2020)
+Author: 911992
+‣Initial release
+
+
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>342</x>
+      <y>453</y>
+      <w>108</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Authors*
+-
+911992[principal]
+https://github.com/911992
+-.
+
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>345</x>
+      <y>174</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*X*
+lw=2
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>360</x>
+      <y>174</y>
+      <w>63</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>On-page reference
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>345</x>
+      <y>192</y>
+      <w>36</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=#eeeeff
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>384</x>
+      <y>192</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Note
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>774</x>
+      <y>792</y>
+      <w>189</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Artifact repo:
+https://github.com/911992/WAsys_simple_generic_object_pool
+bg=#eeeeff</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>801</y>
+      <w>42</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>675</x>
+      <y>669</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*C*
+transparency=0
+layer=1
+lw=2
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>315</y>
+      <w>24</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>633</x>
+      <y>369</y>
+      <w>180</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>api
+--
+bg=#ccffcc
+layer=-199</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>1005</x>
+      <y>762</y>
+      <w>42</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>java::lang
+AutoClosable
+
+bg=white
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>906</x>
+      <y>714</y>
+      <w>81</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;annotation&gt;&gt;
+Field_Setter_Method
+--
++name:String
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1032</x>
+      <y>588</y>
+      <w>9</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>996</x>
+      <y>714</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*C*
+transparency=0
+layer=1
+lw=2
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>660</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>723</y>
+      <w>24</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;30.0;60.0;30.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1026</x>
+      <y>192</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*E*
+transparency=0
+layer=1
+lw=2
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>798</x>
+      <y>312</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*E*
+transparency=0
+layer=1
+lw=2
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1014</x>
+      <y>180</y>
+      <w>24</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>621</x>
+      <y>111</y>
+      <w>189</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>api_wrapper
+--
+bg=#ffffee
+layer=-199</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>627</x>
+      <y>120</y>
+      <w>174</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>template=A: Object
+&lt;&lt;abstract&gt;&gt;
+/Request_Data_Handler_Adapter/
+--
+--
++get_param(:String):String
++get_part_filename(:String):String
++get_part_mime_type(:String):String
++get_part_size(:String):long
++stream_part(:String,:OutputStream):long
++stream_part_at(:String,:int,:OutputStream):long
++get_part_stream(:String):InputStream
++fill_object(:Fillable_Object):void
+#copy_stream(:InputStream,:OutputStream):long
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>135</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>438</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=-
+fg=#99cc99
+transparency=0
+</panel_attributes>
+    <additional_attributes>10.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1029</x>
+      <y>318</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*D*
+transparency=0
+layer=1
+lw=2
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>462</x>
+      <y>111</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>exception
+--
+bg=#ffffee
+layer=-199</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>993</x>
+      <y>750</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*F*
+transparency=0
+layer=1
+lw=2
+bg=blue
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>627</x>
+      <y>210</y>
+      <w>9</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>795</x>
+      <y>213</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*F*
+transparency=0
+layer=1
+lw=2
+bg=blue
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>462</x>
+      <y>216</y>
+      <w>156</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>api_ex
+--
+bg=#ccffff
+layer=-199</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>465</x>
+      <y>228</y>
+      <w>147</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Fillable_Object_Parse_Cache_Accelerator
+--
+--
++_api_ex_set_type_parse_result(:Object):void
++_api_ex_get_type_parse_result(void):Object
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>471</x>
+      <y>255</y>
+      <w>33</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;90.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>462</x>
+      <y>705</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*G*
+transparency=0
+layer=1
+lw=2
+bg=magenta
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>471</x>
+      <y>708</y>
+      <w>48</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>561</x>
+      <y>255</y>
+      <w>36</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>552</x>
+      <y>261</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*G*
+transparency=0
+layer=1
+lw=2
+bg=magenta
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>135</y>
+      <w>105</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Bad_Type_Cache_Object_Ex
+--
+--
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>528</x>
+      <y>120</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*H*
+transparency=0
+layer=1
+lw=2
+fg=white
+bg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>537</x>
+      <y>123</y>
+      <w>27</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>70.0;40.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>462</x>
+      <y>723</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*H*
+transparency=0
+layer=1
+lw=2
+fg=white
+bg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>471</x>
+      <y>723</y>
+      <w>48</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;throws&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1029</x>
+      <y>291</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*I*
+transparency=0
+layer=1
+lw=2
+bg=light_gray
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>276</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>564</x>
+      <y>672</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*I*
+transparency=0
+layer=1
+lw=2
+bg=light_gray
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>573</x>
+      <y>675</y>
+      <w>27</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>774</x>
+      <y>642</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*G*
+transparency=0
+layer=1
+lw=2
+bg=magenta
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>627</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;50.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>519</x>
+      <y>522</y>
+      <w>108</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Field and Method points out to type-description level data. e.g. 
+types are from "java::lang::reflection" package
+style=wordwrap
+bg=#eeeeff</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>561</x>
+      <y>498</y>
+      <w>9</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>822</x>
+      <y>714</y>
+      <w>54</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;annotation&gt;&gt;
+No_Param
+--
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>888</x>
+      <y>726</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*J*
+transparency=0
+layer=1
+lw=2
+fg=pink
+bg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>873</x>
+      <y>717</y>
+      <w>27</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>723</x>
+      <y>669</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*J*
+transparency=0
+layer=1
+lw=2
+fg=pink
+bg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>660</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>675</y>
+      <w>42</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;40.0;120.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>798</x>
+      <y>327</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*I*
+transparency=0
+layer=1
+lw=2
+bg=light_gray
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>330</y>
+      <w>24</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>615</x>
+      <y>345</y>
+      <w>9</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>171</y>
+      <w>105</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Unfillable_Object_Ex
+--
+--
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>528</x>
+      <y>156</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*K*
+transparency=0
+layer=1
+lw=2
+bg=#990099
+fg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>537</x>
+      <y>159</y>
+      <w>27</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>70.0;40.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>798</x>
+      <y>351</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*K*
+transparency=0
+layer=1
+lw=2
+bg=#990099
+fg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>345</y>
+      <w>45</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;throws&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>357</y>
+      <w>201</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+Object_Fill_Result
+--
+Ok
+Ok_Missed_Values
+Ignorred_Duplicated_Type
+Failed
+--
++set_if_overridable(:Object_Fill_Result):Object_Fill_Result
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>918</x>
+      <y>315</y>
+      <w>9</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1020</x>
+      <y>402</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*L*
+transparency=0
+layer=1
+lw=2
+fg=dark_gray
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1002</x>
+      <y>396</y>
+      <w>24</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;60.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>519</x>
+      <y>354</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*L*
+transparency=0
+layer=1
+lw=2
+fg=dark_gray
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>345</y>
+      <w>33</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;90.0;50.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>222</y>
+      <w>39</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;110.0;70.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>966</x>
+      <y>597</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*J*
+transparency=0
+layer=1
+lw=2
+fg=pink
+bg=dark_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>945</x>
+      <y>588</y>
+      <w>27</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>70.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>636</x>
+      <y>384</y>
+      <w>174</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+Field_Fill_Result
+--
+Ok
+Ok_Missed_Data
+Failed_IO_Error
+Failed_Parse_Error
+Failed_Outof_Range
+Failed_Missed_Data
+--
++set_if_overridable(:Field_Fill_Result):Field_Fill_Result
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>726</x>
+      <y>351</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*D*
+transparency=0
+layer=1
+lw=2
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>729</x>
+      <y>360</y>
+      <w>9</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1011</x>
+      <y>315</y>
+      <w>24</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1002</x>
+      <y>753</y>
+      <w>30</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>80.0;40.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>930</x>
+      <y>330</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+Part_Field_Stream_Mode
+--
+Stream_To_Field
+Pass_Stream
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1029</x>
+      <y>342</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*M*
+transparency=0
+layer=1
+lw=2
+bg=orange
+fg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1011</x>
+      <y>345</y>
+      <w>24</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>798</x>
+      <y>297</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*M*
+transparency=0
+layer=1
+lw=2
+bg=orange
+fg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>981</x>
+      <y>660</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*N*
+transparency=0
+layer=1
+lw=2
+bg=dark_gray
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>774</x>
+      <y>669</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*N*
+transparency=0
+layer=1
+lw=2
+bg=dark_gray
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>663</y>
+      <w>24</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>945</x>
+      <y>315</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>300</y>
+      <w>24</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>498</x>
+      <y>261</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*O*
+transparency=0
+layer=1
+lw=2
+fg=magenta
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>918</x>
+      <y>597</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*O*
+transparency=0
+layer=1
+lw=2
+fg=magenta
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>897</x>
+      <y>588</y>
+      <w>27</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>795</x>
+      <y>465</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*P*
+transparency=0
+layer=1
+lw=2
+bg=white
+fg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>453</y>
+      <w>21</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>345</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>570</x>
+      <y>354</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*P*
+transparency=0
+layer=1
+lw=2
+bg=white
+fg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>579</x>
+      <y>345</y>
+      <w>30</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;80.0;50.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>864</x>
+      <y>597</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*Q*
+transparency=0
+layer=1
+lw=2
+bg=light_gray
+fg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>843</x>
+      <y>588</y>
+      <w>27</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>678</x>
+      <y>351</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*Q*
+transparency=0
+layer=1
+lw=2
+bg=light_gray
+fg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>687</x>
+      <y>354</y>
+      <w>27</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;100.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1035</x>
+      <y>396</y>
+      <w>9</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>639</x>
+      <y>222</y>
+      <w>147</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>template=A: Object
+&lt;&lt;abstract&gt;&gt;
+/Poolable_Request_Data_Handler_Adapter/
+--
+-pool:Object_Pool
+--
++post_create(void):void
++pre_destroy(void):void
++set_pool(:Object_Pool):void
++close(void):void
+bg=#ffffcc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>210</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>669</x>
+      <y>504</y>
+      <w>120</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Poolable_Fillable_Object_Adapter/
+--
+-pool:Object_Pool {@No_Param}
+--
+#child_reset_state(void):void
++set_pool(:Object_Pool):void
++reset_state(void):void {final}
++close(void):void
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1014</x>
+      <y>432</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*F*
+transparency=0
+layer=1
+lw=2
+bg=blue
+fg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1017</x>
+      <y>441</y>
+      <w>9</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1008</x>
+      <y>597</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*R*
+transparency=0
+layer=1
+lw=2
+fg=#008800
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>588</y>
+      <w>24</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;60.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>777</x>
+      <y>549</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*R*
+transparency=0
+layer=1
+lw=2
+fg=#008800
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>753</x>
+      <y>543</y>
+      <w>30</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>684</y>
+      <w>66</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;annotation&gt;&gt;
+No_Type_Cache
+--
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1014</x>
+      <y>660</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*S*
+transparency=0
+layer=1
+lw=2
+bg=#448800
+fg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1017</x>
+      <y>669</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>774</x>
+      <y>612</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>*S*
+transparency=0
+layer=1
+lw=2
+bg=#448800
+fg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>597</y>
+      <w>21</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>50.0;50.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

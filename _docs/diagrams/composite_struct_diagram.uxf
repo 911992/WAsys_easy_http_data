@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>450</x>
+      <y>360</y>
+      <w>666</w>
+      <h>342</h>
+    </coordinates>
+    <panel_attributes>wasys::lib::pojo_http_data
+--
+bg=#ffffee
+layer=-200</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>459</x>
+      <y>387</y>
+      <w>477</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+POJO HTTP Data
+bg=#ffff99
+layer=-3
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>450</x>
+      <y>117</y>
+      <w>423</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>wasys::lib::generic_object_pool
+--
+bg=#eeffff
+layer=-200</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>468</x>
+      <y>144</y>
+      <w>162</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+WAsys Generic
+Object Pool
+bg=#ccffff
+layer=-190</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>621</x>
+      <y>162</y>
+      <w>108</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>702</x>
+      <y>144</y>
+      <w>144</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Object_Factory
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>711</x>
+      <y>270</y>
+      <w>144</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Object_Pool
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>621</x>
+      <y>297</y>
+      <w>153</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+bg=#ccffff</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>495</x>
+      <y>477</y>
+      <w>279</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+&lt;&lt;impl&gt;&gt;
+Default(Generic)
+Object
+Filler
+bg=#ffff99
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>927</x>
+      <y>630</y>
+      <w>117</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>100.0;20.0;100.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>936</x>
+      <y>657</y>
+      <w>171</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Request_Data_Handler
+style=wordwrap
+fontsize=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>558</y>
+      <w>198</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Generic_Object_Filler
+valign=center
+bg=#ffffaf
+transparency=0
+lt=.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>981</x>
+      <y>468</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>747</x>
+      <y>306</y>
+      <w>99</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;90.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>468</y>
+      <w>234</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1143</x>
+      <y>423</y>
+      <w>162</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+User
+Component
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>477</y>
+      <w>171</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1143</x>
+      <y>612</y>
+      <w>162</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+HTTP Server
+Container
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>612</y>
+      <w>153</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+
+bg=pink</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1278</x>
+      <y>558</y>
+      <w>27</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+
+bg=pink</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1269</x>
+      <y>495</y>
+      <w>45</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+</panel_attributes>
+    <additional_attributes>20.0;60.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>171</y>
+      <w>576</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+&lt;&lt;may provide&gt;&gt;
+bg=green</panel_attributes>
+    <additional_attributes>500.0;280.0;500.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>180</y>
+      <w>144</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;creates&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;270.0;140.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>774</x>
+      <y>585</y>
+      <w>252</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;may use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;260.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>927</x>
+      <y>540</y>
+      <w>333</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implement&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0;350.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>117</x>
+      <y>135</y>
+      <w>324</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>*Document*
+-.
+Project: POJO HTTP Data
+Title: Composite Structure Diagram
+Doc version: 0.1(May 10, 2020)
+Repo:
+https://github.com/911992/WAsys_pojo_http_data
+Author(s):
+911992
+
+-
+*Meta Legends*
+-.
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>117</x>
+      <y>495</y>
+      <w>324</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>*Version History*
+-.
+*v0.1*
+(May 10, 2020)
+Author: 911992
+‣Initial release
+
+
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>117</x>
+      <y>603</y>
+      <w>324</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>*Authors*
+-
+911992[principal]
+https://github.com/911992
+-.
+
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>558</y>
+      <w>252</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.
+
+fg=light_gray</panel_attributes>
+    <additional_attributes>260.0;20.0;10.0;20.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>720</x>
+      <y>711</y>
+      <w>198</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Request_Data_Handler
+bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>1017</x>
+      <y>711</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Fillable_Object
+bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>711</y>
+      <w>279</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;requires&gt;&gt;</panel_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>846</x>
+      <y>486</y>
+      <w>135</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Fillable_Object
+style=wordwrap
+fontsize=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>468</x>
+      <y>711</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+User
+Component
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>621</x>
+      <y>711</y>
+      <w>207</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=)-</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>576</x>
+      <y>423</y>
+      <w>261</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Poolable_Fillable_Object_Adapter
+style=wordwrap
+fontsize=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>828</x>
+      <y>414</y>
+      <w>18</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>432</y>
+      <w>180</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;50.0;180.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>837</x>
+      <y>423</y>
+      <w>243</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+transparency=90
+fg=light_gray</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>468</x>
+      <y>774</y>
+      <w>675</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>/Note: Poolable_Fillable_Object_Adapter is a abstract class(not an interface)/
+style=wordwrap
+fontsize=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

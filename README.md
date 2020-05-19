@@ -9,7 +9,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 ![tldr diagram](./_docs/diagrams/social_media_image.svg)
 
 ## Revision History
-Latest: v0.1 (May 10, 2020) (initial version)  
+Latest: v0.1.1 (May 19, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 

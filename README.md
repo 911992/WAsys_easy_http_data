@@ -168,8 +168,8 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 * **[WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test)** Sample implementation of this lib, for testing purpose(not a real HTTP Server Container!)  
 
 ## TODOs
-- [ ] Documenting the source code(maybe next decade :D, it hurts!)
+- [x] Documenting the source code(partial, for essential API-level types)
 - [x] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work. (you may find it [here](https://github.com/911992/WAsys_pojo_http_data_test))
-- [ ] Servlet 3.0 Wrapper
+- [ ] Servlet 3.0 Wrapper (in progress :D, `yes!`)
 - [ ] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()`
 

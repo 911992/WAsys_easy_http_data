@@ -37,6 +37,8 @@ Author: [911992](https://github.com/911992)
     * Added class diagram dedicated versioning [file](./_docs/diagrams/class_diagram_version_history.md)
     * Removed `lib` folder(gitignore)
     * Updated this file layout/format
+    * Updated the `README.md` file
+        * updated the TODOs section
 
 **0.1.2** (May 20, 2020)  
 

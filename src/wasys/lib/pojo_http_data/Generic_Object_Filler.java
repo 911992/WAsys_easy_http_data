@@ -6,13 +6,22 @@
  /*
 WAsys_pojo_http_data
 File: Generic_Object_Filler.java
-Created on: May 14, 2020 5:04:45 PM | last edit: May 14, 2020
+Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Updated the header(this comment) part
+        • Added some javadoc
+        • Added missed Unfillable_Object_Ex throws clause for process_request methods
+        • Cache the "field fill err message generation" to fill(object) level, now the Fillable_Object.generate_result_err_msg() is called once for each fill(no matter how many errs)
+        • Updated(added param) read_and_set_param, and set_result methods. Added a bool to specify if the error mesage generation is a thing
+        • Method result_event(), Calling the failed set field error message, after field state event (first: set_field_fill_result() , then: set_field_fill_result_err_msg())
+
     0.1.2 (20200520)
         • Fixed the wrong type check at read_and_set_param (Poolable_Object -> Fillable_Object)
         • Removed the redundant Poolable_Object type import
+
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data;
@@ -32,7 +41,13 @@ import wasys.lib.pojo_http_data.api.container.Request_Data_Handler;
 import wasys.lib.pojo_http_data.exception.Unfillable_Object_Ex;
 
 /**
- *
+ * Generic(default) Object filler
+ * <p>
+ * This class asks for parsing({@link Fillable_Object_Parser}) an object's type for filling, if the type has not been parsed yet
+ * </p>
+ * <p>
+ * It follows the default filling policy which defined by API({@link Fillable_Object})
+ * </p>
  * @author https://github.com/911992
  */
 public class Generic_Object_Filler {
@@ -45,12 +60,21 @@ public class Generic_Object_Filler {
     private Generic_Object_Filler() {
     }
 
-    public static void process_request(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj) {
+    /**
+     * Fills the given {@code arg_obj}, from given {@code arg_data_handler}.
+     * <p>
+     * If the given {@code arg_obj}'s type is not parsed yet, it gets parsed 
+     * </p>
+     * @param arg_data_handler the wrapper/implementation of actual HTTP request (provided by the HTTP Server Component)
+     * @param arg_obj The object is desired to be filled
+     * @throws Unfillable_Object_Ex where given {@link arg_obj} is not fillable
+     */
+    public static void process_request(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj) throws Unfillable_Object_Ex{
         Vector<Class> _ex_classes = new Vector<>(3, 7);
         process_request(arg_data_handler, arg_obj, _ex_classes);
     }
 
-    private static void process_request(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj, Vector<Class> arg_exclude_types) {
+    private static void process_request(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj, Vector<Class> arg_exclude_types) throws Unfillable_Object_Ex{
         if (arg_obj == null) {
             return;
         }
@@ -62,9 +86,10 @@ public class Generic_Object_Filler {
         arg_exclude_types.add(_arg_obj_typ);
         Vector<Fillable_Object_Field_Signature_Cache> _field_sigs = _cache.getFields();
         Object_Fill_Result _obj_fill = Object_Fill_Result.Ok;
+        boolean _gen_err_msg = arg_obj.generate_result_err_msg();
         for (int a = 0; a < _field_sigs.size(); a++) {
             Fillable_Object_Field_Signature_Cache _fsigc = _field_sigs.elementAt(a);
-            int _set = read_and_set_param(arg_data_handler, arg_obj, _fsigc);
+            int _set = read_and_set_param(arg_data_handler, arg_obj, _fsigc,_gen_err_msg);
             switch (_set) {
                 case FIELD_SET_IGNORED_FILLABLE_TYPE: {
                     Fillable_Object_Field_Signature _fsig = _fsigc.getField_signature();
@@ -113,7 +138,7 @@ public class Generic_Object_Filler {
         arg_obj.set_object_fill_result(_obj_fill);
     }
 
-    private static int read_and_set_param(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj, Fillable_Object_Field_Signature_Cache arg_field_sig_cache) {
+    private static int read_and_set_param(Request_Data_Handler arg_data_handler, Fillable_Object arg_obj, Fillable_Object_Field_Signature_Cache arg_field_sig_cache,boolean arg_gen_err_msg) {
         Fillable_Object_Field_Signature _fsig = arg_field_sig_cache.getField_signature();
         Class _type = _fsig.getType();
         if (Fillable_Object.class.isAssignableFrom(_type)) {
@@ -135,7 +160,7 @@ public class Generic_Object_Filler {
                 if (_fsig.isNullable()) {
                     return FIELD_SET_SUCCESS_NO_DATA;
                 } else {
-                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Missed_Data);
+                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Missed_Data,arg_gen_err_msg);
                     return FIELD_SET_FAILED;
                 }
             }
@@ -152,7 +177,7 @@ public class Generic_Object_Filler {
         if (_type == String.class) {
             set_field_data(arg_obj, arg_field_sig_cache, _data, _fill_mode);
             if ((_data.length() < _minl) || (_data.length() > _maxl)) {
-                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range);
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
         } else if (OutputStream.class.isAssignableFrom(_type)) {
@@ -162,11 +187,11 @@ public class Generic_Object_Filler {
                 _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
             }
             if (_part_size == -1) {
-                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error);
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
             if (_part_size < _minl || _part_size > _maxl) {
-                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range);
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             } else {
                 boolean _part_ok = arg_obj.prepare_for_part(_param_name, _param_idx, _part_name, _part_size, _part_mime);
@@ -177,12 +202,12 @@ public class Generic_Object_Filler {
                                 OutputStream _out = (OutputStream) arg_field_sig_cache.getType_field().get(arg_obj);
                                 long _written = arg_data_handler.stream_part_at(_param_name, _param_idx, _out);
                                 if (_written != _part_size) {
-                                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error);
+                                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
                                     _set_res = FIELD_SET_FAILED;
                                 }
                                 _out.flush();
                             } catch (NullPointerException | IOException e) {
-                                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error);
+                                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
                                 _set_res = FIELD_SET_FAILED;
                             } catch (Throwable e) {
                             }
@@ -208,11 +233,11 @@ public class Generic_Object_Filler {
                     set_field_data(arg_obj, arg_field_sig_cache, _d, _fill_mode);
                 }
                 if ((_d < _min) || (_d > _max)) {
-                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range);
+                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                     _set_res = FIELD_SET_FAILED;
                 }
             } catch (Exception e) {
-                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Parse_Error);
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Parse_Error,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
         } else {
@@ -235,11 +260,11 @@ public class Generic_Object_Filler {
                 }
                 set_field_data(arg_obj, arg_field_sig_cache, _lv, _fill_mode);
                 if (_out_of_range || (_l < _minl) || (_l > _maxl)) {
-                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range);
+                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                     _set_res = FIELD_SET_FAILED;
                 }
             } catch (Exception e) {
-                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Parse_Error);
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Parse_Error,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
         }
@@ -274,8 +299,8 @@ public class Generic_Object_Filler {
         return true;
     }
 
-    private static void result_event(Fillable_Object arg_obj, Fillable_Object_Field_Signature arg_fsig, Field_Fill_Result arg_result) {
-        if (arg_result == Field_Fill_Result.Ok || arg_obj.generate_result_err_msg() == false) {
+    private static void result_event(Fillable_Object arg_obj, Fillable_Object_Field_Signature arg_fsig, Field_Fill_Result arg_result,boolean arg_gen_err_msg) {
+        if (arg_result == Field_Fill_Result.Ok || arg_gen_err_msg == false) {
             return;
         }
         String _arg_param = arg_fsig.getParam_name();
@@ -315,10 +340,10 @@ public class Generic_Object_Filler {
         } else {
             msg = null;
         }
+        arg_obj.set_field_fill_result(_arg_param, _arg_param_idx, arg_result);
         if (msg != null) {
             arg_obj.set_field_fill_result_err_msg(_arg_param, _arg_param_idx, new String[]{msg});
         }
-        arg_obj.set_field_fill_result(_arg_param, _arg_param_idx, arg_result);
     }
 
 }

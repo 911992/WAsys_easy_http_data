@@ -10,6 +10,9 @@ Created on: May 13, 2020 6:33:05 PM | last edit: May 13, 2020
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Added some javadoc
+
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data.api_wrapper;
@@ -22,7 +25,7 @@ import wasys.lib.pojo_http_data.api.Fillable_Object;
 import wasys.lib.pojo_http_data.api.container.Request_Data_Handler;
 
 /**
- *
+ * Adapter class for Request_Data_Handler which implements some possible methods
  * @author https://github.com/911992
  */
 public abstract class Request_Data_Handler_Adapter<A> implements Request_Data_Handler<A> {

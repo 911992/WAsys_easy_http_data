@@ -6,10 +6,14 @@
  /*
 WAsys_pojo_http_data
 File: Fillable_Object_Parser.java
-Created on: May 13, 2020 10:49:43 PM | last edit: May 13, 2020
+Created on: May 13, 2020 10:49:43 PM
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Updated the header(this comment) part
+        • Added some javadoc
+
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data;
@@ -31,7 +35,10 @@ import wasys.lib.pojo_http_data.api.annotations.No_Type_Cache;
 import wasys.lib.pojo_http_data.api_ex.Fillable_Object_Parse_Cache_Accelerator;
 
 /**
- *
+ * Default {@link Fillable_Object} type parser.
+ * <p>
+ * Parses a {@link Fillable_Object} following the APi specific std. It also would cache the type fingerprint internally(or by the type cache accelerator/cache ({@link Fillable_Object_Parse_Cache_Accelerator})
+ * </p>
  * @author https://github.com/911992
  */
 public class Fillable_Object_Parser {
@@ -50,6 +57,12 @@ public class Fillable_Object_Parser {
     private Fillable_Object_Parser() {
     }
 
+    /**
+     * Tries to return the already parsed given {@code arg_obj} type, or attempt to parse and return.
+     * @param arg_obj the non-null
+     * @return a non-null successful type fingerprint, or <b>{@code null}</b> if the given {@code arg_obj} is not fillable.
+     * @throws NullPointerException if the give {@code null} is null.
+     */
     static Fillable_Object_Parse_Result find_or_parse_object(Fillable_Object arg_obj) {
         Fillable_Object_Parse_Result _res = ctx.find_result(arg_obj);
         if (_res != null) {

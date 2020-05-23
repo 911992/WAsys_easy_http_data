@@ -6,10 +6,14 @@
  /*
 WAsys_pojo_http_data
 File: No_Param.java
-Created on: May 14, 2020 4:51:41 AM | last edit: May 14, 2020
+Created on: May 14, 2020 4:51:41 AM
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Updated the header(this comment) part
+        • Added some javadoc
+
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data.api.annotations;
@@ -20,7 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
+ * Mark a POJO's field as no param. Parser will ignore it, as filler will not fill it too.
  * @author https://github.com/911992
  */
 @Retention(RetentionPolicy.RUNTIME)

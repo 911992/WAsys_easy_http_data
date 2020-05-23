@@ -6,10 +6,14 @@
 /*
 WAsys_pojo_http_data
 File: Poolable_Request_Data_Handler_Adapter.java
-Created on: May 19, 2020 3:25:53 AM | last edit: May 19, 2020
+Created on: May 19, 2020 3:25:53 AM
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Updated the header(this comment) part
+        • Added some javadoc
+
     initial version: 0.1(20200510)
 */
 
@@ -20,8 +24,9 @@ import wasys.lib.generic_object_pool.api.Poolable_Object;
 
 
 /**
- * 
+ * Adapter class for Request_Data_Handler_Adapter which makes it as a {@link Poolable_Object}
  * @author https://github.com/911992
+ * @param <A> 
  */
 public abstract class Poolable_Request_Data_Handler_Adapter<A> extends Request_Data_Handler_Adapter implements Poolable_Object,AutoCloseable{
     

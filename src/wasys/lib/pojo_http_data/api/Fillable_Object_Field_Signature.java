@@ -6,26 +6,59 @@
  /*
 WAsys_pojo_http_data
 File: Fillable_Object_Field_Signature.java
-Created on: May 13, 2020 4:02:03 AM | last edit: May 13, 2020
+Created on: May 13, 2020 4:02:03 AM
     @author https://github.com/911992
  
 History:
+    0.1.3(20200521)
+        • Updated the header(this comment) part
+        • Added some javadoc
+
     initial version: 0.1(20200510)
  */
 package wasys.lib.pojo_http_data.api;
 
 /**
- *
+ * Specifies a field policy.
+ * An immutable class, need to initialized and declared by the user(custom type definition) or filler(as cache), that explains one(1) field of the POJO
  * @author https://github.com/911992
  */
 public class Fillable_Object_Field_Signature {
-
+    /**
+     * the http parameter name should be read.
+     */
     final private String param_name;
+    /**
+     * the http parameter index, default as 0.
+     */
     final private int param_idx;
+    /**
+     * the field name of the POJO, by default as http parameter name(if applicable).
+     */
     final private String entity_field_name;
+    /**
+     * the type of the field should be considered/decoded.
+     * Supported types are listed as below
+     * •primitive types and their wrappers, except for boolean, and char.
+     * •@{code OutputStream} or inherited type(for part/file upload)
+     * •Any {@code Fillable_Object} POJO (please considering duplicated type per fill op will be ignored)
+     */
     final private Class type;
+    /**
+     * Indicates if the type support for being-null(missed) data or not.
+     */
     final private boolean nullable;
+    /**
+     * The minimum len or value allowed for the type.
+     * For {@code String} type it is used for the literal len
+     * For {@code OutputStream} type, it is used for the file len
+     */
     final private double min_len_val;
+    /**
+     * The maximum len or value allowed for the type.
+     * For {@code String} type it is used for the literal len
+     * For {@code OutputStream} type, it is used for the file len
+     */
     final private double max_len_val;
 
     public Fillable_Object_Field_Signature(String name, Class type) {

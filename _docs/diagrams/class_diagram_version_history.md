@@ -3,6 +3,11 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./_docs/diagrams/class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.1.4** (May 24, 2020)  
+* Renamed method `get_params` to `get_param_vals` in class `Request_Data_Handler`
+
+<hr/>
+
 **v0.1.3** (May 21, 2020)  
 
 * linked missed `Unfillable_Object_Ex` exception on `Request_Data_Handler.file_object(:Fillable_Object:void` method

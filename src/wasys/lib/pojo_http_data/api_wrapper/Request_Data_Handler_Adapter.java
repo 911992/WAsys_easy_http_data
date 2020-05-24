@@ -10,6 +10,9 @@ Created on: May 13, 2020 6:33:05 PM | last edit: May 13, 2020
     @author https://github.com/911992
  
 History:
+    0.1.5(20200524)
+        • Added missed Unfillable_Object_Ex throw type for fill_object method
+
     0.1.4(20200524)
         • IOException throw clause for stream_part method, as the parent/interface def has changed
 
@@ -26,6 +29,7 @@ import java.io.OutputStream;
 import wasys.lib.pojo_http_data.Generic_Object_Filler;
 import wasys.lib.pojo_http_data.api.Fillable_Object;
 import wasys.lib.pojo_http_data.api.container.Request_Data_Handler;
+import wasys.lib.pojo_http_data.exception.Unfillable_Object_Ex;
 
 /**
  * Adapter class for Request_Data_Handler which implements some possible methods
@@ -73,7 +77,7 @@ public abstract class Request_Data_Handler_Adapter<A> implements Request_Data_Ha
     }
 
     @Override
-    public void fill_object(Fillable_Object arg_object) {
+    public void fill_object(Fillable_Object arg_object) throws Unfillable_Object_Ex{
         Generic_Object_Filler.process_request(this, arg_object);
     }
 

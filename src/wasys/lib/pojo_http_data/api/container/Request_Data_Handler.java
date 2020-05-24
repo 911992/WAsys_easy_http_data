@@ -10,6 +10,9 @@ Created on: May 12, 2020 10:49:35 PM
     @author https://github.com/911992
  
 History:
+    0.1.5(20200524)
+        • Renamed method get_params to get_param_vals, now it looks less confusing
+
     0.1.4(20200524)
         • get_part_stream_at and get_part_stream methods now throw IOException, when requested part stream is not avaialbe(or any other related io exception/reason)
         • Updated the javadoc for get_part_stream_at, and get_part_stream methods
@@ -57,7 +60,7 @@ public interface Request_Data_Handler<A> {
      * @param arg_param_name name of the parameter
      * @return an array of String contains all parameter values
      */
-    public String[] get_params(String arg_param_name);
+    public String[] get_param_vals(String arg_param_name);
 
     /**
      * @return Returns the unique parameter(not a file-upload from form data) names

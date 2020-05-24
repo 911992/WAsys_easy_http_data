@@ -4,6 +4,17 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.5** (May 24, 2020)  
+
+0. `Source_Code::Request_Data_Handler`
+    * Renamed method `get_params` to `get_param_vals`, now it looks less confusing
+1. `Source_Code::Request_Data_Handler_Adapter`
+    * Added missed `Unfillable_Object_Ex` throw type for `fill_object()` method
+2. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+
+<hr/>
+
 **0.1.4** (May 24, 2020)  
 
 0. `Source_Code::Generic_Object_Filler`
@@ -13,6 +24,8 @@ Author: [911992](https://github.com/911992)
     * `get_part_stream_at` and `get_part_stream` methods now may throw an `IOException`
 2. `Request_Data_Handler_Adapter`
     * `IOException` throw clause for `stream_part` method
+
+<hr/>
 
 **0.1.3** (May 21, 2020)  
 
@@ -50,6 +63,8 @@ Author: [911992](https://github.com/911992)
     * Updated the `README.md` file
         * updated the TODOs section
 
+<hr/>
+
 **0.1.2** (May 20, 2020)  
 
 0. `Source_Code::Generic_Object_Filler`
@@ -59,9 +74,13 @@ Author: [911992](https://github.com/911992)
     * Fixed the wrong date format and layout of this release_note file
     * Update the repo README file, added the test sample repo link
 
+<hr/>
+
 **0.1.1** (May 19, 2020)  
 
 0. Diagrams
     * Updated composition/struct diagram
+
+<hr/>
 
 **Initial Release 0.1** (May 10, 2020)

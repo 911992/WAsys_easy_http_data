@@ -4,6 +4,16 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.4** (May 24, 2020)  
+
+0. `Source_Code::Generic_Object_Filler`
+    * `Pass_Stream` file upload processing now may result an IOException, or enexpected `null` ptr from http request impl, so op now is done using a `try-catch` block
+        * Marking the related field/object filling state as failed
+1. `Source_Code::Request_Data_Handler`
+    * `get_part_stream_at` and `get_part_stream` methods now may throw an `IOException`
+2. `Request_Data_Handler_Adapter`
+    * `IOException` throw clause for `stream_part` method
+
 **0.1.3** (May 21, 2020)  
 
 0. Added some doc for API(public)-level types (oh, it was hard `-_-` )  

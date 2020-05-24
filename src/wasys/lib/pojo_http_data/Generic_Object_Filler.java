@@ -10,6 +10,10 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.1.4(20200524)
+        • File upload processing, using Pass_Stream now is done by a try-catch, since getting stream of http requ may throw an IOException, or returns a null reference
+            • Set Object/field filling as failed, becasue of an IOException, or unexpected null stream ptr
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -214,8 +218,23 @@ public class Generic_Object_Filler {
                             break;
                         }
                         case Pass_Stream: {
-                            InputStream _part_stream = arg_data_handler.get_part_stream_at(_param_name, _param_idx);
-                            arg_obj.part_stream(_param_name, _param_idx, _part_stream);
+                            boolean _io_ok;
+                            try {
+                                InputStream _part_stream = arg_data_handler.get_part_stream_at(_param_name, _param_idx);
+                                if(_part_stream !=null){
+                                    arg_obj.part_stream(_param_name, _param_idx, _part_stream);
+                                    _io_ok = true;
+                                }else{
+                                    _io_ok = false;
+                                }
+                            } catch (IOException e) {
+                                _io_ok=false;
+                            }
+                            if(_io_ok == false){
+                                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
+                                _set_res = FIELD_SET_FAILED;
+                            }
+                            
                             break;
                         }
                         default: {

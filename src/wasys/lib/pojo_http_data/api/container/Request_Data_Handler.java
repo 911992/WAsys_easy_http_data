@@ -10,6 +10,10 @@ Created on: May 12, 2020 10:49:35 PM
     @author https://github.com/911992
  
 History:
+    0.1.4(20200524)
+        • get_part_stream_at and get_part_stream methods now throw IOException, when requested part stream is not avaialbe(or any other related io exception/reason)
+        • Updated the javadoc for get_part_stream_at, and get_part_stream methods
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -133,16 +137,18 @@ public interface Request_Data_Handler<A> {
      * Returns the input stream(probably buffered) of the part/file-upload named as given parameter
      * @param arg_param name of the parameter
      * @return the stream contains part/file-upload data
+     * @throws IOException if requested part is no more accessible, or any io related exception
      */
-    public InputStream get_part_stream(String arg_param);
+    public InputStream get_part_stream(String arg_param)throws IOException;
 
     /**
      * Returns the input stream(probably buffered) of the part/file-upload named as given parameter at given index
      * @param arg_param name of the parameter
      * @param arg_idx index of the parameter name
      * @return the stream contains part/file-upload data
+     * @throws IOException if requested part is no more accessible, or any io related exception
      */
-    public InputStream get_part_stream_at(String arg_param, int arg_idx);
+    public InputStream get_part_stream_at(String arg_param, int arg_idx)throws IOException;
 
     /**
      * Fills the given {@link Fillable_Object} argument, either using a custom filler/parser or default ones.

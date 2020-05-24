@@ -10,6 +10,9 @@ Created on: May 13, 2020 6:33:05 PM | last edit: May 13, 2020
     @author https://github.com/911992
  
 History:
+    0.1.4(20200524)
+        • IOException throw clause for stream_part method, as the parent/interface def has changed
+
     0.1.3(20200521)
         • Added some javadoc
 
@@ -65,7 +68,7 @@ public abstract class Request_Data_Handler_Adapter<A> implements Request_Data_Ha
     }
 
     @Override
-    public InputStream get_part_stream(String arg_param) {
+    public InputStream get_part_stream(String arg_param)throws IOException {
         return get_part_stream_at(arg_param, 0);
     }
 

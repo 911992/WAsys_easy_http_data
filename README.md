@@ -122,20 +122,22 @@ Considering following scenario
 Where considering, filling a `Cls_C` type is appreciated, so here is the filling process by `Generic_Object_Filler`  
 Filling Type `Cls_C`:  
 
-0. `a_param_0` *(fill as inherited)*  
-1. `a_param_1` *(fill as inherited)*  
-2. `b_param`  
-3. `bd` (fill as unique type)  
-    0. `a_param_0` *(fill as inherited)*  
-    1. `a_param_1` *(fill as inherited)*  
-    2. `d_param`  
-    3. (`dc` gets ignored, becasue of real/actual fill type)  
-    4. `da` *(fill as unique type)*  
-        0. `a_param_0` (fill as inherited)  
-        1. `a_param_1` (fill as inherited)  
-4. `c_param`  
-5. (`cd` gets ignored, because of `Cls_B.bd`)  
-6. (`ca` gets ignored, because of `Cls_D.da`)  
+<pre>
+0. a_param_0 (fill as inherited)
+1. a_param_1 (fill as inherited)  
+2. b_param  
+3. bd (fill as unique type)  
+    0. a_param_0 (fill as inherited)  
+    1. a_param_1 (fill as inherited)  
+    2. d_param 
+    3. (dc gets ignored, becasue of real/actual fill type)  
+    4. da (fill as unique type)  
+        0. a_param_0 (fill as inherited)  
+        1. a_param_1 (fill as inherited)  
+4. c_param  
+5. (cd gets ignored, because of Cls_B.bd)  
+6. (ca gets ignored, because of Cls_D.da)  
+</pre>
 
 **Notes**  
 

@@ -1,9 +1,18 @@
 # Class Diagram Version History
 repo: https://github.com/911992/WAsys_pojo_http_data  
-file: [class_diagram](./_docs/diagrams/class_diagram.svg)  
+file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.1.6** (May 25, 2020)  
+
+* **very stupid bug, sorry about that**: removed `type_parse_cache` static field from `Fillable_Object_Adapter` class. (now fast cache is supposed to work, and should implemented by the user)
+* Dropped implementation associate between `Fillable_Object_Adapter` and `Fillable_Object_Parse_Cache_Accelerator`
+    * removed `_api_ex_set_type_parse_result` , and `_api_ex_get_type_parse_result` inherited members
+
+<hr/>
+
 **v0.1.4** (May 24, 2020)  
+
 * Renamed method `get_params` to `get_param_vals` in class `Request_Data_Handler`
 
 <hr/>

@@ -10,6 +10,9 @@ Created on: May 13, 2020 9:32:15 PM
     @author https://github.com/911992
  
 History:
+    0.1.6(20200525)
+        • Updated the documentation, removed the link/ref to Fillable_Object_Adapter
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -24,7 +27,6 @@ package wasys.lib.pojo_http_data.api_ex;
  * You may assume this is a static/type level interface(which is technically not possible with java), so make sure how to do it right.
  * <b>Important:</b> This type was added in order to skip context search, by a direct/explicit type-level caching, so if you don't know how to implement it, just ignore it.
  * <b>Note:</b> the cache instance <u>must not</u> keep the given cache as object/instance level var, which will make the reason of type-level cache redundant.
- * <b>Hint:</b> please check {@link Fillable_Object_Adapter} for a sample impl. Or actually copy the way it has :D
  * @author https://github.com/911992
  */
 public interface Fillable_Object_Parse_Cache_Accelerator {

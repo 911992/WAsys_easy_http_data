@@ -6,10 +6,11 @@ It lands as a layer, between a HTTP Server Container(thinking a Servlet impl lik
 
 Simply, it **ease** the way for grabbing data from HTTP level, into java type level.  
 
-![tldr diagram](./_docs/diagrams/social_media_image.svg)
+![tldr diagram](./_docs/diagrams/social_media_image.svg)  
+*diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.5 (May 24, 2020)  
+Latest: v0.1.6 (May 25, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -27,7 +28,8 @@ You are probably looking for some sample and fast API explination, so if yes(if 
 But if you like to implement the lib/API for your(or one) HTTP Server COntainer, or beter would like to contribute, so you are welcome.  
 
 ## Composition Structure
-![Composition Structure Diagram](./_docs/diagrams/composite_struct_diagram_partial.svg)
+![Composition Structure Diagram](./_docs/diagrams/composite_struct_diagram_partial.svg)  
+*diagram 1: [Composition structure diagram](./_docs/diagrams/composite_struct_diagram.svg)*
 
 ### Explination
 **Overall:** **User Component** defines its **`Fillable_Object`**s and asks **POJO HTTP Data** componeent using an implementation of `Request_Data_Handler` that is provided by a **HTTP Server Container** componenet.  
@@ -52,7 +54,8 @@ As mentioned, this is recommended to pool POJOs to gain more performance, and be
 **Note:** Using `Fillable_Object_Field_Signature`, and `Poolable_Request_Data_Handler_Adapter`will not mark the target types poolable magically, please check out [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) repo for more help.
 
 ## Class Diagram
-![Class Diagram](./_docs/diagrams/class_diagram_partial.svg)
+![Class Diagram](./_docs/diagrams/class_diagram_partial.svg)  
+*diagram 2: [Class diagram](./_docs/diagrams/class_diagram.svg)*
 
 
 ## Library API
@@ -69,6 +72,8 @@ Here is the list of supported types. Types are considered for filling, any other
 A POJO could be introduced by user manually, or get parsed using reflection at runtime(default). If User wishes to provide the POJO fingerprint(field signatures), so the result may get validated.  
 
 Default POJO parser (`Fillable_Object_Parser`) validate the given POJO fingerprint by user.
+
+Please mind since v0.1.6, the default parser parses and prepare the type fingerprint as `parent(s) -to-> child/type` order.
 
 ### POJO Caching Policy
 By **default**, a POJO fingerprint should be cached for performance related stuffs, however this policy could be ignored.
@@ -93,7 +98,9 @@ The setter method could be marked either using `Field_Definition`(has priority) 
 If the method was not found, parser may decides to either set the field directly(no setter method, if applicable), or go for another check and hope for find the `setAaa(<<field-type>>):void` method(where `Aaa` is the name of the field).  
 
 mind the default POJO parser (`Fillable_Object_Parser`) checks all paths above, considering following diagram.  
-![Field Setter Method Finding Alg](./_docs/diagrams/pojo_field_setter_memeber_alg_partial.svg)
+
+![Field Setter Method Finding Alg](./_docs/diagrams/pojo_field_setter_memeber_alg_partial.svg)  
+*diagram 3: [Field setter method finding algorithm](./_docs/diagrams/pojo_field_setter_memeber_alg.svg)*
  
 ### HTTP File(part) Upload Handling
 For asking for a file upload data(part), POJO should have a `OutputStream`(or inherited) field.  
@@ -102,49 +109,63 @@ The setter method defined for `OutputStream`(or inherited types) are ignored, si
 
 Once the Filler finds the part available, in informs the POJO by calling the `prepare_for_part(...):bool` to inform user/POJO, there will be a file stream data.  
 
-POJO now would perform some specific op to prepare requirements for that streaming op, and it **MUST** return `true` if the stream have to happen, otherwise (by `false`), it means ignore streaming for filler module.  
+POJO now would perform some specific op to prepare requirements for that streaming op, and it **MUST** return `true` if the stream have to happen, otherwise (by `false`), it means ignore streaming for filler module. 
+
+## Filling Policy For `Reflection_Type_Fields` Type Prsing Mode
+Since lib version 0.1.6(May 25, 2020), the default parser (`Fillable_Object_Parser`), scrap fillable fields for a `Fillable_Object` from `parent(s) -to-> child/type` order. It means the top-level parent will have high-priority for filling, as the actual type will be the last one.
+
+Considering following scenario
 
 ![Inner Fillable Scenario Sample](./_docs/diagrams/inner_fillable_scenario0_partial.svg)  
+*diagram 4: [Filling scenario sample 0](./_docs/diagrams/inner_fillable_scenario0.svg)*
 
 Where considering, filling a `Cls_C` type is appreciated, so here is the filling process by `Generic_Object_Filler`  
-Filling Type Cls_C:
-<pre>
-0. `c_param`
-1. `cd`
-    0. `d_param`
-    1. (`dc` gets ignored)
-    2. `da`
-        0. `param_a`
-        1. `param_b`
-2. (`ca` gets ignored)
-3. `b_paranm`
-4. (`bd` gets ignored)
-5. `param_a`
-6. `parab_b`
-</pre>
+Filling Type `Cls_C`:  
+
+0. `a_param_0` *(fill as inherited)*  
+1. `a_param_1` *(fill as inherited)*  
+2. `b_param`  
+3. `bd` (fill as unique type)  
+    0. `a_param_0` *(fill as inherited)*  
+    1. `a_param_1` *(fill as inherited)*  
+    2. `d_param`  
+    3. (`dc` gets ignored, becasue of real/actual fill type)  
+    4. `da` *(fill as unique type)*  
+        0. `a_param_0` (fill as inherited)  
+        1. `a_param_1` (fill as inherited)  
+4. `c_param`  
+5. (`cd` gets ignored, because of `Cls_B.bd`)  
+6. (`ca` gets ignored, because of `Cls_D.da`)  
+
+**Notes**  
+
+Inheritted types are *not counted* by filling a child type, so this is becasue `a_param_0`, and `a_param_1` from `Cls_A` are filled 3 times  
+* 1st. fill (0 and 1) becasue of inherited from `Cls_C` (actual object)
+* 2nd. fill (3.0, and 3.1) because of inherited from `Cls_D` (inner fillable object)
+* 3rd. fill (3.4.0, and 3.4.0) because of unique/direct link to `Cls_A`
+
+But `Cls_D.dc`, `Cls_C.cd`, and `Cls_C.ca` are ignored, becasue of duplicated-direct types for filling.
 
 ### Inner `Fillable_Object` Filling
 Inner `Fillable_Object` should be supported, as `Generic_Object_Filler` supports it too.  
 
 The target `Fillable_Object` field should not be null at the time parser is trying to access it, otherwise parser should not attempt to create a new instance and fulfill it.
 
-This is because of creation policy of the target `Fillable_Object` type, where it could be a `Poolable_Object`, so target object may be created/acquired by user in a specific way.
+This is because of creation policy of the target `Fillable_Object` type, where it could be a `Poolable_Object`, so target object may be created/acquired by user in a specific way.  
 
 A `Fillable_Object` field should not be `null`, or it gets ignored.  
-
-Considering following sample entity class diagram
-
 
 **Note:** by default, the `Generic_Object_Filler` fills a `Fillable_Type` once for each fill op, to avoid recursion possibilities. So if a type has two `Fillable_type` inner fields from a type, the second one will be ignorred.
 
 ## Default POJO Filler `Generic_Object_Filler`
 This class provides a default POJO filling functionality, that could be used by target HTTP Server Container component.  
 Considering following list contains policies are followed by default POJO manipulator(`Generic_Object_Filler`).  
-* All static fields are ignored for fulfillment.
-* Primitive(and wrappers) and final fields are ignored(even when setter methods are specified).
-* Inner inherited `Fillable_Object`, and `OutputStream` could be marked as final, since there will be no method setter call for them.
+* All `static` fields are ignored for fulfillment.
+* Primitive(and wrappers) fields that have `final` modifier are ignored(even when a setter methods are specified).
+* Inner inherited `Fillable_Object`, and `OutputStream` could be marked as `final`, since there will be no method setter call for them.
 * Param read and field set are done as Fields order in POJO.
 * Duplicated inner `Fillable_Object` types are ignored for fulfillment for each fill op(to avoid possible recursion).
+* Parsing and filling a `Fillable_Object` comes as **`parent(s) -> child`** order (effective since v0.1.6)
 * A marked field may or may not have a setter method. The default setter method should be in `setAaa(:<<Field_Type>>):void` format(where `Aaa` is the name of the field)
 
 ## `Fillable_Object_Adapter` Type
@@ -154,8 +175,38 @@ Please note during the filling op, there will be zero exception related to POJO 
 
 `Fillable_Object_Adapter` type(and it's poolable child `Poolable_Fillable_Object_Adapter`) would track the generic object filling, by implementing generic field fill event listeners.
 
-![Fillable_Object_Adapter type state diagram](./_docs/diagrams/Fillable_Object_Adapter_type_state_diagram_partial.svg)
+**Note:** Since v0.1.6, `Fillable_Object_Adapter` is not a `Fillable_Object_Parse_Cache_Accelerator`, as used to cause a very stupid bug(sorry for myself `-_-`), now any global-fast type fingerprint cache should be done by user impl.
 
+![Fillable_Object_Adapter type state diagram](./_docs/diagrams/Fillable_Object_Adapter_type_state_diagram_partial.svg)  
+*diagram 5: [Fillable_Object_Adapter type state diagram](./_docs/diagrams/Fillable_Object_Adapter_type_state_diagram.svg)*
+
+## Global-Fast Type Fingerprint Cache Using `Fillable_Object_Parse_Cache_Accelerator`
+Finding a type cache is done using a simple loop/search in default parser/ctx (`Fillable_Object_Signature_Context`). In a situation, this loop up may hit some small/big performance impact, to loop up for a fingerprint of a type everytime it needs to be filled.
+
+The Solution is about keeping a type's cache fingerprint somehwree which could be accessed and found very fast. Simply using a static field withing each dedicated/standalone `Fillable_Object`.
+
+User may implement the `Fillable_Object_Parse_Cache_Accelerator` method, and save the passing fingerprint `Object` somehere **`static`** and safe in related type.
+
+**Note:** Please make sure how does this `Fillable_Object_Parse_Cache_Accelerator` is supposed to be implemented, or this might make the fast idea being this caching solution a true slow disaster.
+
+Considering following diagram, as a typical/generic `Fillable_Object` type that supports for `Fillable_Object_Parse_Cache_Accelerator`.  
+
+![Typical Fillable_Object Type that supports Fillable_Object_Parse_Cache_Accelerator diagram](./_docs/diagrams/typical_fillable_object_type_with_cache_acc_partial.svg)  
+*diagram 6: [Typical `Fillable_Object` Type that supports `Fillable_Object_Parse_Cache_Accelerator diagram`](./_docs/diagrams/typical_fillable_object_type_with_cache_acc.svg)*
+
+**Note(s) about above diagram**  
+Please mind **both** `Cachable_Entity`, and `Cachable_Entity_Child` has overriden the methods of `Fillable_Object_Parse_Cache_Accelerator`.  
+It doesn't matter if parent(`Cachable_Entity`) is a `Fillable_Object_Parse_Cache_Accelerator`, so its child (`Cachable_Entity_Child`) will be, this is *technically* `true`, but *logically* false.  
+
+This is becasue each standalone/dedicated `Fillable_Object` type is needed to implement the fast-cache idea(`Fillable_Object_Parse_Cache_Accelerator`) **MUST** implement the related method indivisually.  
+
+* Type `Cachable_Entity` sets the given cache object by `_api_ex_set_type_parse_result` to its `private` and **`STATIC`** `type_cache_parent` field. As it returns the same object when `_api_ex_get_type_parse_result` is called by an instance or class-level invocation.  
+* Type `Cachable_Entity_Child` is technically a `Fillable_Object_Parse_Cache_Accelerator`(since its parent/`super` is), but it **MUST** override the related fast-cache methods *again*. Now it stores and reads its dedicated type cache from its dedicated and **`STATIC`** `type_cache_child` field.  
+
+Generally, you may think `Fillable_Object_Parse_Cache_Accelerator` have to be implemented at *class* level, not object.  
+By default each cache for a type is proceed only once, so it lands at type-level, rather than instance-level  
+
+You may please check out the Sample7 in [WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test) repo for an instance.
 
 ## Utilizing The Lib
 Add the library to your project classpath, add WAsys_generic_object_pool artifact too(if required).

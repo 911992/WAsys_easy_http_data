@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>224</x>
+      <y>192</y>
+      <w>288</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>*Document*
+-.
+Project: POJO HTTP Data
+Title: Typical Fillable_Object Type that supports Fillable_Object_Parse_Cache_Accelerator
+Doc version: 0.1.6(May 25, 2020)
+/(Please refer to typical_fillable_object_type_with_cache_acc_version_history.md file for version history)/
+Repo:
+https://github.com/911992/WAsys_pojo_http_data
+Author(s):
+911992
+
+-
+*Meta Legends*
+-.
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>224</x>
+      <y>600</y>
+      <w>288</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Authors*
+-
+911992[principal]
+https://github.com/911992
+-.
+
+valign=top
+halign=left
+layer=-100
+bg=light_gray
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>520</y>
+      <w>512</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Cachable_Entity_Child
+&lt;&lt;leaf&gt;&gt;
+--
+_-type_cache_child:Object {@No_Param}_
+--
++_api_ex_set_type_parse_result(:Object):void {override}
++_api_ex_get_type_parse_result(void):Object {override}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>744</x>
+      <y>208</y>
+      <w>320</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Fillable_Object_Parse_Cache_Accelerator
+bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>760</x>
+      <y>456</y>
+      <w>112</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>No_Param
+&lt;&lt;annotation&gt;&gt;
+bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>296</y>
+      <w>512</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Cachable_Entity
+--
+_-type_cache_parent:Object {@No_Param}_
+--
++_api_ex_set_type_parse_result(:Object):void {override}
++_api_ex_get_type_parse_result(void):Object {override}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>248</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>248</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>432</y>
+      <w>24</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>688</y>
+      <w>920</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;1130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>224</x>
+      <y>712</y>
+      <w>896</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>*VERY IMPORTANT*
+Please mind both Cachable_Entity, and Cachable_Entity_Child has overriden the methods of Fillable_Object_Parse_Cache_Accelerator
+It doesn't matter if parent(Cachable_Entity) is a Fillable_Object_Parse_Cache_Accelerator, so its child (Cachable_Entity_Child) will be.
+This is technically true, but logically false.
+
+This is becasue each standalone/dedicated Fillable_Object type is needed to implement the fast-cache idea(Fillable_Object_Parse_Cache_Accelerator) MUST implement the related method indivisually
+
+At diagram above, please mind
+• Type Cachable_Entity sets the given cache object by _api_ex_set_type_parse_result to its private and STATIC type_cache_parent field. As it returns the same object when _api_ex_get_type_parse_result is called by an isnatnce or class-level invocation.
+• Type Cachable_Entity_Child is technically a Fillable_Object_Parse_Cache_Accelerator(since its parent is), but it MUST override the related fast-cache methods again. Now it stores and reads its dedicated type cache from its dedicated and STATIC type_cache_child field.
+
+Generally, you may think Fillable_Object_Parse_Cache_Accelerator have to be implemented at class level, not object
+By default each cache for a type is proceed only once, so it lands at type-level, rather than instance-level
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>544</x>
+      <y>208</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Fillable_Object
+bg=#ffff99</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>432</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;100.0;50.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>464</y>
+      <w>104</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+</diagram>

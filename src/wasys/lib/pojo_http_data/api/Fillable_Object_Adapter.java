@@ -10,6 +10,11 @@ Created on: May 13, 2020 4:30:45 AM
     @author https://github.com/911992
  
 History:
+    0.1.6(20200525)
+        • VERY STUPID BUG fix: Fillable_Object_Adapter is no more a Fillable_Object_Parse_Cache_Accelerator
+        • Drop methods _api_ex_set_type_parse_result, and _api_ex_get_type_parse_result methods
+        • Removed static type_parse field
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -25,17 +30,13 @@ History:
 package wasys.lib.pojo_http_data.api;
 
 import wasys.lib.pojo_http_data.api.annotations.No_Param;
-import wasys.lib.pojo_http_data.api_ex.Fillable_Object_Parse_Cache_Accelerator;
 
 /**
  * Adapter class of {@link Filalble_Object} interface, that implements other interfaces too.
  * 
  * @author https://github.com/911992
  */
-public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillable_Object_Manipulator, Fillable_Object_Parse_Cache_Accelerator {
-
-    @No_Param
-    private static Object type_parse = null;
+public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillable_Object_Manipulator{
 
     private static interface _Err_Message_Setter {
 
@@ -161,16 +162,6 @@ public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillab
     @Override
     public Fillable_Object_Field_Signature[] get_field_signatures() {
         return null;
-    }
-
-    @Override
-    final public void _api_ex_set_type_parse_result(Object arg_arg) {
-        Fillable_Object_Adapter.type_parse = arg_arg;
-    }
-
-    @Override
-    final public Object _api_ex_get_type_parse_result() {
-        return Fillable_Object_Adapter.type_parse;
     }
     
     protected void child_reset_state() {

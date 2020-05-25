@@ -10,6 +10,9 @@ Created on: May 13, 2020 10:49:43 PM
     @author https://github.com/911992
  
 History:
+    0.1.6(20200525)
+        • Finding fields in reflection mode as parent-to-child fields order now
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -243,8 +246,9 @@ public class Fillable_Object_Parser {
         int _res = 0;
         do {
             Field[] _dfs = arg_type.getDeclaredFields();
+            arg_to_ctx.ensureCapacity(_dfs.length + arg_to_ctx.size());
             for (int a = 0; a < _dfs.length; a++) {
-                arg_to_ctx.add(_dfs[a]);
+                arg_to_ctx.add(a,_dfs[a]);
                 _res++;
             }
             arg_type = arg_type.getSuperclass();

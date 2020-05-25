@@ -4,6 +4,30 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.6** (May 25, 2020)  
+0. **Important**: Parsing and filling a `Fillable_Object` type now is done as **`parent(s) -> child`** field processing when the fill mode is set to `Reflection_Type_Fields`. This means top-parent fields will be considered for filling first, while actual/real(the type was asked for filling) field(s) type will be the last one.
+1. **Importand**: one **very stupid bug** by me, about global-fast cache, now fixed.
+    * `Fillable_Object_Adapter` is no more a `Fillable_Object_Parse_Cache_Accelerator`
+    * Fixed the globally type fingerprint cache by `Fillable_Object_Adapter` static field(which is a totally stupid idea), now fixed/removed.
+2. `Source_Code::Fillable_Object_Parser`
+    * Finding fields in reflection mode now follows the parent-to-child order (new type parsing/filling policy)
+3. `Source_code::Fillable_Object_Parse_Cache_Accelerator`
+    * Updated the documentation, removed the link/ref to `Fillable_Object_Adapter`
+3. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+    * Updated Fillable_Object Scenario 0 diagram (check changes [here](./_docs/diagrams/inner_fillable_scenario0_version_history.md))
+4. Repo
+    * Updated `README.md` file
+        * Added "Filling Policy For `Reflection_Type_Fields` Type Prsing Mode" missed heading
+        * Updated filling scenario order (as inluded in "Fillable_Object Scenario 0" [file](./_docs/diagrams/inner_fillable_scenario0.svg))
+        * Added caption for diagrams
+        * Dedicated part about global cache keeping using `Fillable_Object_Parse_Cache_Accelerator`
+    * [`File::class_diagram_version_history.md`](./_docs/diagrams/class_diagram_version_history.md)
+        * Fixed wrong class-diagram file link
+    * Added "Fillable_Object Scenario 0" dedicated versioning [file](./_docs/diagrams/inner_fillable_scenario0_version_history.md)
+    * Added "Typical Fillable_Object Type that supports Fillable_Object_Parse_Cache_Accelerator" [diagram](./_docs/diagrams/typical_fillable_object_type_with_cache_acc_partial.svg), and its change history [file](./_docs/diagrams/typical_fillable_object_type_with_cache_acc_version_history.md).
+<hr/>
+
 **0.1.5** (May 24, 2020)  
 
 0. `Source_Code::Request_Data_Handler`

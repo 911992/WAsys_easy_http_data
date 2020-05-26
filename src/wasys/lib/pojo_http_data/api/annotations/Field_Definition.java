@@ -10,6 +10,9 @@ Created on: May 13, 2020 3:20:13 PM
     @author https://github.com/911992
  
 History:
+    0.1.7(20200526)
+        • param_name now comes with default an empty value, when param name is same as field name
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -36,7 +39,7 @@ public @interface Field_Definition {
     /**
      * @return specifies the http parameter name
      */
-    public String param_name();
+    public String param_name() default "";
     /**
      * @return specifies the parameter index
      */

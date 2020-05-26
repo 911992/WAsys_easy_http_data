@@ -3,6 +3,13 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.1.7** (May 26, 2020)
+
+* Added missed `post_create(void):void`, and `pre_destroy(void):void` methods for type `Poolable_Fillable_Object_Adapter`
+* Default value for `param_name(void):String` attrib/method in type `Field_Definition`
+
+<hr/>
+
 **v0.1.6** (May 25, 2020)  
 
 * **very stupid bug, sorry about that**: removed `type_parse_cache` static field from `Fillable_Object_Adapter` class. (now fast cache is supposed to work, and should implemented by the user)

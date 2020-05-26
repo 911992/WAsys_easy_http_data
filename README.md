@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.6 (May 25, 2020)  
+Latest: v0.1.7 (May 26, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 

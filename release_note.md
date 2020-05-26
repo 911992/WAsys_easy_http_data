@@ -4,7 +4,19 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.7** (May 26, 2020)  
+
+0. `Source_Code::Field_Definition`
+    * `param_name()` now comes with `default` val as an empty String value (when param name is same as field name)
+1. `Source_Code::Poolable_Fillable_Object_Adapter`
+    * Added missed `Poolable_Object` `post_create()`, and `pre_destroy()` methods (default method stab) to unforce target type to implement them when not required.
+3. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+
+<hr/>
+
 **0.1.6** (May 25, 2020)  
+
 0. **Important**: Parsing and filling a `Fillable_Object` type now is done as **`parent(s) -> child`** field processing when the fill mode is set to `Reflection_Type_Fields`. This means top-parent fields will be considered for filling first, while actual/real(the type was asked for filling) field(s) type will be the last one.
 1. **Importand**: one **very stupid bug** by me, about global-fast cache, now fixed.
     * `Fillable_Object_Adapter` is no more a `Fillable_Object_Parse_Cache_Accelerator`
@@ -26,6 +38,7 @@ Author: [911992](https://github.com/911992)
         * Fixed wrong class-diagram file link
     * Added "Fillable_Object Scenario 0" dedicated versioning [file](./_docs/diagrams/inner_fillable_scenario0_version_history.md)
     * Added "Typical Fillable_Object Type that supports Fillable_Object_Parse_Cache_Accelerator" [diagram](./_docs/diagrams/typical_fillable_object_type_with_cache_acc_partial.svg), and its change history [file](./_docs/diagrams/typical_fillable_object_type_with_cache_acc_version_history.md).
+
 <hr/>
 
 **0.1.5** (May 24, 2020)  

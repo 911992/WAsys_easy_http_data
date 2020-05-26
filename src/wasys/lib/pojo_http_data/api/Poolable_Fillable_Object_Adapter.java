@@ -10,6 +10,9 @@ Created on: May 19, 2020 3:29:19 AM
     @author https://github.com/911992
  
 History:
+    0.1.7(20200526)
+        • Added missed Poolable_Object post_create(), and pre_destroy() methods (default method stab) to unforce target type to implement them when not required
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -44,6 +47,24 @@ public abstract class Poolable_Fillable_Object_Adapter extends Fillable_Object_A
             return;
         }
         pool.release_an_instance(this);
+    }
+    
+    /**
+     * Called from the associated pool object/ctx, when this instance has just initialized by related factory, and part of the pool context.
+     * Default stab for method, to avoid forced impl by target type
+     */
+    @Override
+    public void post_create() {
+        
+    }
+
+    /**
+     * Called from the associated pool object/ctx, when pool is about shutdown, or this instance is no longer considered to be part of the pool ctx.
+     * Default stab for method, to avoid forced impl by target type
+     */
+    @Override
+    public void pre_destroy() {
+        
     }
     
     @Override

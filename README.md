@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.7 (May 26, 2020)  
+Latest: v0.1.8 (May 28, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -181,6 +181,72 @@ Please note during the filling op, there will be zero exception related to POJO 
 
 ![Fillable_Object_Adapter type state diagram](./_docs/diagrams/Fillable_Object_Adapter_type_state_diagram_partial.svg)  
 *diagram 5: [Fillable_Object_Adapter type state diagram](./_docs/diagrams/Fillable_Object_Adapter_type_state_diagram.svg)*
+
+## Reading Parameter Order And Policy
+Reading parameters is done as order of parameters are provided by URL path(request-line), and any parameter at the body part(either `multipart`, or as form data).
+
+Considering following simple request:   
+
+```
+POST /gateway?user=911&user=992&user=991
+Content-Length: 10
+
+user=991.2
+```
+
+As there are 4 `user` parameters. Considering the order of reading parameters will be as following  
+0. 911 <small>*(request-line)*</small>
+1. 992 <small>*(request-line)*</small>
+2. 991 <small>*(request-line)*</small>
+3. 991.2 <small>*(content/body)*</small>
+
+Where the order is `request-line`, then body content. No matter if the content is a multipart or not.
+
+## `Request_Data_Handler` And `multipart` Request Data
+Considering following policies must be applied by the `Request_Data_Handler` implementer.
+
+### Identifying Streamable Content
+File uploading must be happened as a `multipart` `POST` request. According to the `HTTP` RFC7578([§4.2](https://tools.ietf.org/html/rfc7578#section-4.2)), the part may, or may not come with a `filename` parameter to tell the name of the file is being uploaded, however the **HTTP Server Component** (`Request_Data_Handler` implementer) MUST treat every part of a `multipart` request as a streamable data.
+
+This means, even form data could be grabbed as a fileupload content. This may be even good for processing large text input(e.g. by a lenghty textarea).
+
+Due to this, so please considering about `Fillable_Object.prepare_for_part()` method the is called when a part is being ready for streaming/providing, that `mime`, and `filename` parameters *COULD* be a `null`.
+
+Considerring following `multipart` `POST` request sample  
+
+```
+POST /fileupload/upload HTTP/1.1
+Host: localhost:1931
+Content-Type: multipart/form-data; 
+boundary=---------------------------boundary-911992
+Content-Length: 441
+-----------------------------boundary-911992
+Content-Disposition: form-data; name="file"; filename="ghuser.txt"
+Content-Type: text/plain
+
+Github user(s):911992
+-----------------------------boundary-911992
+Content-Disposition: form-data; name="cvalidation"
+
+true
+-----------------------------boundary-911992
+Content-Disposition: form-data; name="func__"
+
+update
+-----------------------------boundary-911992--
+```
+
+As beside `cvalidation`, and `func__` are formdata, but could be treated as file/stremable content.
+
+### Identifying Form Data
+According to RFC7578, there is no explicitly way to find out if a part is a form data or a fileupload.
+
+By default, `Request_Data_Handler` should consider parts come without any `content-type` as a form data. This policy *MUST* be applied when finding a parameter is desired(cosidering `Request_Data_Handler.get_param_at()` method).
+
+### Identifying the Content Charset
+According to RFC7578([§4.5](https://tools.ietf.org/html/rfc7578#section-4.5), and §5.1.2 ), the agent may, or may not send the charset it used for encoding the content using `content-type` part header. But the most better way is using the `_charset_` part field, that comes with a `ASCII` content, identifies the charset for form data.
+
+By default `_charset_` field is check, no matter if it was used explicitly by user as a user param or not, if it fails, then for each part, `content-type` should be checked, and if both failed, the default `UTf-8` will be used.
 
 ## Global-Fast Type Fingerprint Cache Using `Fillable_Object_Parse_Cache_Accelerator`
 Finding a type cache is done using a simple loop/search in default parser/ctx (`Fillable_Object_Signature_Context`). In a situation, this loop up may hit some small/big performance impact, to loop up for a fingerprint of a type everytime it needs to be filled.

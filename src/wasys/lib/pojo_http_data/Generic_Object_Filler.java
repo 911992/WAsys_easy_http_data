@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.1.8(20200528)
+        • (a bad bug fix, sorry for that -_- ), fixed the redundant get_param_at() invocation, when the field is an OutputStream
+
     0.1.4(20200524)
         • File upload processing, using Pass_Stream now is done by a try-catch, since getting stream of http requ may throw an IOException, or returns a null reference
             • Set Object/field filling as failed, becasue of an IOException, or unexpected null stream ptr
@@ -150,23 +153,23 @@ public class Generic_Object_Filler {
         }
         String _param_name = _fsig.getParam_name();
         int _param_idx = _fsig.getParam_idx();
-        String _data = arg_data_handler.get_param_at(_param_name, _param_idx);
+        String _data;
         long _part_size = -1;
-        if (_data == null) {
-            boolean _data_null = true;
-            if (OutputStream.class.isAssignableFrom(_type)) {
-                _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
-                if (_part_size != -1) {
-                    _data_null = false;
-                }
-            }
-            if (_data_null) {
-                if (_fsig.isNullable()) {
-                    return FIELD_SET_SUCCESS_NO_DATA;
-                } else {
-                    result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Missed_Data,arg_gen_err_msg);
-                    return FIELD_SET_FAILED;
-                }
+        boolean _data_null = false;
+        if (OutputStream.class.isAssignableFrom(_type) == false ) {
+            _data = arg_data_handler.get_param_at(_param_name, _param_idx);
+            _data_null = (_data == null);
+        }else{
+            _data = null;
+            _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
+            _data_null = (_part_size == -1);
+        }
+        if( _data_null ){
+            if (_fsig.isNullable()) {
+                return FIELD_SET_SUCCESS_NO_DATA;
+            } else {
+                result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Missed_Data,arg_gen_err_msg);
+                return FIELD_SET_FAILED;
             }
         }
         int _set_res = FIELD_SET_SUCCESS_WITH_DATA;

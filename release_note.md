@@ -4,6 +4,17 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.8** (May 28, 2020)  
+
+0. `Source_Code::Generic_Object_Filler`
+    * *(a bad bug fix, sorry for that `-_-` )*, fixed the redundant `get_param_at()` invocation, when the field is an `OutputStream` by field filling(`read_and_set_param()` method)
+1. Repo
+    * Updated `README.md` file
+        * Added *Reading Parameter Order And Policy*, abd *`Request_Data_Handler` And `multipart` Request Data* sections
+        * Explinations about possible stremable parts with a `multipart` request(including an example)
+
+<hr/>
+
 **0.1.7** (May 26, 2020)  
 
 0. `Source_Code::Field_Definition`

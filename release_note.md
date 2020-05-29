@@ -4,6 +4,16 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.9** (May 30, 2020)  
+
+0. Repo
+    * Updated `README.md` file
+        * Added *Implementations* section to list up all available wrappers and implementations
+        * Added [Servlet 3.0 impl repo link](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper)
+        * Marked the *Servlet 3.0 Wrapper* task as completed
+
+<br/>
+
 **0.1.8** (May 28, 2020)  
 
 0. `Source_Code::Generic_Object_Filler`

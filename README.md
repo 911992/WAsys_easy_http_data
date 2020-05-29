@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.8 (May 28, 2020)  
+Latest: v0.1.9 (May 30, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -19,8 +19,14 @@ Please refer to [release_note.md](./release_note.md) file
 1. A HTTP Server Container (component)
 2. [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) (a simple object pooling implementation) (optional)  
 
-
 **Note:** dependency to WAsys_generic_object_pool lib is optional. It means user, and/or HTTP wrapper modules may or may not utilize the poolable types(but recommended).
+
+## Implementations
+Here is the list of available implementations(and wrapprs), that would make this project run.  
+
+0. Servlet 3.0 Wrapper (repo: [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test)) (support for Servler 3.0 and later)
+
+**Note:** Term *implementation*, may refer to implementing(dropping defualt one) the POJO(`FIllable_Object`) filler and aprser modules, or as a *wrapper* that implements the *HTTP Server Component* for supporting a specific lib/engine/spec.
 
 ## Shall I Read Stuffs Ahead?
 You are probably looking for some sample and fast API explination, so if yes(if you are a end-user), then `false`, you don't need to read and understand the content, instead you may also check [WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test) repo, that contains some sample of this lib.
@@ -195,10 +201,11 @@ user=991.2
 ```
 
 As there are 4 `user` parameters. Considering the order of reading parameters will be as following  
-0. 911 <small>*(request-line)*</small>
-1. 992 <small>*(request-line)*</small>
-2. 991 <small>*(request-line)*</small>
-3. 991.2 <small>*(content/body)*</small>
+
+0. 911 *(request-line)*
+1. 992 *(request-line)*
+2. 991 *(request-line)*
+3. 991.2 *(content/body)*
 
 Where the order is `request-line`, then body content. No matter if the content is a multipart or not.
 
@@ -289,6 +296,6 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 ## TODOs
 - [x] Documenting the source code(partial, for essential API-level types)
 - [x] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work. (you may find it [here](https://github.com/911992/WAsys_pojo_http_data_test))
-- [ ] Servlet 3.0 Wrapper (in progress :D, `yes!`)
+- [x] Servlet 3.0 Wrapper (as [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
 - [ ] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()`
 

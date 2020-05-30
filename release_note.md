@@ -4,6 +4,13 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.10** (May 31, 2020)  
+
+0. `Source_Code::Generic_Object_Filler`
+    * Removed a redundant `if` block, from `process_request()` method
+
+<br/>
+
 **0.1.9** (May 30, 2020)  
 
 0. Repo

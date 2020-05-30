@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.1.10 (20200531)
+        • Removed a redundant if block, from process_request() method
+
     0.1.8(20200528)
         • (a bad bug fix, sorry for that -_- ), fixed the redundant get_param_at() invocation, when the field is an OutputStream
 
@@ -137,9 +140,6 @@ public class Generic_Object_Filler {
                 default: {
                     throw new AssertionError();
                 }
-            }
-            if (_set == FIELD_SET_IGNORED_FILLABLE_TYPE) {
-
             }
         }
         arg_obj.set_object_fill_result(_obj_fill);

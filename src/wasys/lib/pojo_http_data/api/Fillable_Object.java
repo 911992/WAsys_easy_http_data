@@ -10,6 +10,9 @@ Created on: May 13, 2020 1:17:53 AM
     @author https://github.com/911992
  
 History:
+    0.1.11(20200601)
+        • Added part_streaming_done(:String,:int.:bool):void method
+
     0.1.3(20200521)
         • Updated the header(this comment) part
         • Added some javadoc
@@ -136,6 +139,17 @@ public interface Fillable_Object {
      */
     default public boolean prepare_for_part(String arg_param_name, int arg_param_idx, String arg_part_filename, long arg_part_size, String arg_part_mime) {
         return true;
+    }
+    
+    /**
+     * This method is called after a success {@code Stream_To_Field} part stream mode.
+     * NOTE: If the stream mode was asked as {@code Pass_Stream} by {@code part_io_stream_mode()} method, then this method will not be called by the filler.
+     * @param arg_param_name name of the http parameter
+     * @param arg_param_idx index of the http parameter
+     * @param arg_success_op {@code true} if streaming has done successfully, {@code false} otherwise(e.g. io related exception, etc...)
+     * @since 0.1.11
+     */
+    default public void part_streaming_done(String arg_param_name,int arg_param_idx,boolean arg_success_op){
     }
 
     /**

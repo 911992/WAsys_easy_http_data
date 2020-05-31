@@ -3,6 +3,12 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.1.11** (Jun 1, 2020)
+
+* Added method `part_streaming_done(:String,:int:bool):void`, for `Fillable_Object`
+
+<hr/>
+
 **v0.1.7** (May 26, 2020)
 
 * Added missed `post_create(void):void`, and `pre_destroy(void):void` methods for type `Poolable_Fillable_Object_Adapter`

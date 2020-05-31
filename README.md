@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.10 (May 31, 2020)  
+Latest: v0.1.11 (Jun 1, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -116,6 +116,10 @@ The setter method defined for `OutputStream`(or inherited types) are ignored, si
 Once the Filler finds the part available, in informs the POJO by calling the `prepare_for_part(...):bool` to inform user/POJO, there will be a file stream data.  
 
 POJO now would perform some specific op to prepare requirements for that streaming op, and it **MUST** return `true` if the stream have to happen, otherwise (by `false`), it means ignore streaming for filler module. 
+
+Then filler calls for `part_io_stream_mode(void):Part_field_Stream_Mode` to know if the related part stream should be passed to pojo for a user specific io op(using `part_stream()` method), or asks the concreted `Request_Data_Handler` to perform a whole in to out stream mode.
+
+If the POJO/user asked for direct field streaming mode(returned `Stream_To_Field` by `part_io_stream_mode()` method), then by end of the streaming, filler `flush()` the related POJO `OutputStream`, and calls the `part_streaming_done(:String,:int,arg_io_ok:bool):void` method, to inform the POJO/user if the field streaming was success or not (as `arg_io_ok` param)
 
 ## Filling Policy For `Reflection_Type_Fields` Type Prsing Mode
 Since lib version 0.1.6(May 25, 2020), the default parser (`Fillable_Object_Parser`), scrap fillable fields for a `Fillable_Object` from `parent(s) -to-> child/type` order. It means the top-level parent will have high-priority for filling, as the actual type will be the last one.

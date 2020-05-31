@@ -4,6 +4,21 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.1.11** (Jun 1, 2020)  
+
+0. **API Change**: POJO Filler(`Generic_Object_Filler` or any other concreted one) should inform the POJO about a `Stream_To_Field` streaming op, if the io op was ok, or nu by invoking the `Filleble_Object.part_streaming_done()` method.
+1. `Source_Code::Generic_Object_Filler`
+    * Calling method `part_streaming_done()`, when a part stream should be performed as `Stream_To_Field` mode, to inform if io stream was ok by related `Request_Data_Handler`
+2. `Source_Code::Fillable_Object`
+    * Added `part_streaming_done(:String,:int.:bool):void` method
+3. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+4. Repo
+    * Update `README.md` file
+        * Updated "HTTP File(part) Upload Handling" section, explained more about streamable fields.
+
+<br/>
+
 **0.1.10** (May 31, 2020)  
 
 0. `Source_Code::Generic_Object_Filler`

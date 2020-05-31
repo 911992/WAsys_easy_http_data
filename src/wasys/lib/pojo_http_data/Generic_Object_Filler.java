@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.1.11 (20200601)
+        • Calling method part_streaming_done(), when a part stream should be performed as Stream_To_Field mode, to inform if io stream was ok by related Request_Data_Handler
+
     0.1.10 (20200531)
         • Removed a redundant if block, from process_request() method
 
@@ -205,6 +208,7 @@ public class Generic_Object_Filler {
                 if (_part_ok == true) {
                     switch (arg_obj.part_io_stream_mode()) {
                         case Stream_To_Field: {
+                            boolean _io_ok;
                             try {
                                 OutputStream _out = (OutputStream) arg_field_sig_cache.getType_field().get(arg_obj);
                                 long _written = arg_data_handler.stream_part_at(_param_name, _param_idx, _out);
@@ -213,11 +217,16 @@ public class Generic_Object_Filler {
                                     _set_res = FIELD_SET_FAILED;
                                 }
                                 _out.flush();
+                                _io_ok = true;
                             } catch (NullPointerException | IOException e) {
                                 result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
                                 _set_res = FIELD_SET_FAILED;
+                                _io_ok = false;
                             } catch (Throwable e) {
+                                e.printStackTrace();
+                                _io_ok = false;
                             }
+                            arg_obj.part_streaming_done(_param_name, _param_idx, _io_ok);
                             break;
                         }
                         case Pass_Stream: {

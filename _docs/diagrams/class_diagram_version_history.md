@@ -3,6 +3,27 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.2** (Jun 5, 2020)
+
+* Updated class `Generic_Object_Filler`
+    * Changed(renamed) `-process_request(:Request_Data_Handler,:Fillable_Object,:Vector<Class>):void` to `-process_request_internal(:Request_Data_Handler,:Fillable_Object,:ArrayList<Class>):void` in class `Generic_Object_Filler`
+    * Added `ARRAYLIST_POOL_MAX_VAL_LOOKUP_KEY`, `ARRAYLIST_DEFAULT_POOL_MAX_VAL`, and `ARRAYLIST_POOL` static fields
+    * Added a `static{}` (static block), and a note about it
+    * Added `init_arraylist_pool(void):void` static method 
+* Added `JNDI`, `javax.naming` package, and `InitialContext` class ref
+* Added `ArrayList` class ref
+* Added `Poolable_ArrayList` class
+* Added `Factory` class
+* Added `Pool_Context` class ref in `WAsys Generic Object Pool` component
+* Using `ArrayList`(non-synchronized) list, instead of `Vector`(synchronized)
+    * `~fields:Vector<Fillable_Object_Field_Signature_Cache>` to `~fields:ArrayList<Fillable_Object_Field_Signature_Cache>` in class `Fillable_Object_Parse_Result`
+    * `ctx:Vector<Fillable_Object_Parse_Result>` to `ctx:ArrayList<Fillable_Object_Parse_Result>` in class `Fillable_Object_Signature_Context`
+    * `-get_all_fields(:Class,arg_to_ctx:Vector<Field>):int` to `-get_all_fields(:Class,arg_to_ctx:ArrayList<Field>):int` in class `Fillable_Object_Parser`
+* Added `DEFAULT_BUFFER_SIZE` static field in `Request_Data_Handler_Adapter` class
+* Changed signature of  method `find_marked_setter_method(:Class,:String,:Class):Method` to `find_marked_setter_method(:Class,:Field):Method`
+
+<hr/>
+
 **v0.1.11** (Jun 1, 2020)
 
 * Added method `part_streaming_done(:String,:int:bool):void`, for `Fillable_Object`

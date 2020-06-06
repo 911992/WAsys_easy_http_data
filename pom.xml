@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020, https://github.com/911992 All rights reserved.
+License BSD 3-Clause (https://opensource.org/licenses/BSD-3-Clause)
+-->
+
+<!--<![CDATA[
+
+WAsys_pojo_http_data
+File: pom.xml
+Created on: Jun 1, 2020 17:38:31 PM
+    @author https://github.com/911992
+ 
+History:
+    
+    initial version: 0.2(20200604)
+
+]]>-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.911992</groupId>
+    <artifactId>WAsys_pojo_http_data</artifactId>
+    <version>0.2.0</version>
+    <packaging>jar</packaging>
+    <description>A simple and generic lib, to convert and validate http requests into native java types</description>
+    <url>https://github.com/911992/WAsys_pojo_http_data</url>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <licenses>
+        <license>
+            <name>The 3-Clause BSD License</name>
+            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+    </licenses>
+    
+    <developers>
+        <developer>
+            <name>911992</name>
+            <url>https://github.com/911992</url>
+        </developer>
+    </developers>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.github.911992</groupId>
+            <artifactId>WAsys_simple_generic_object_pool</artifactId>
+            <version>0.4.7</version>
+        </dependency>
+    </dependencies>
+  
+    <scm>   
+        <connection>scm:git:git://github.com/911992/WAsys_pojo_http_data.git</connection>   
+        <developerConnection>scm:git:ssh://github.com/911992/WAsys_pojo_http_data.git</developerConnection>   
+        <url>https://github.com/911992/WAsys_pojo_http_data/tree/master</url> 
+    </scm>
+
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    
+    
+    <distributionManagement>
+        <snapshotRepository>   
+            <id>ossrh</id>        
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url> 
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    
+    
+        
+</project>

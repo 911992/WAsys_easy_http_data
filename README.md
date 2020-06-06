@@ -10,28 +10,42 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.1.11 (Jun 1, 2020)  
+Latest: v0.2 (Jun 5, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
 ## Requirments
 0. Java 1.8  
 1. A HTTP Server Container (component)
-2. [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) (a simple object pooling implementation) (optional)  
-
-**Note:** dependency to WAsys_generic_object_pool lib is optional. It means user, and/or HTTP wrapper modules may or may not utilize the poolable types(but recommended).
+2. [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) (a simple object pooling implementation)
 
 ## Implementations
 Here is the list of available implementations(and wrapprs), that would make this project run.  
 
 0. Servlet 3.0 Wrapper (repo: [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test)) (support for Servler 3.0 and later)
 
-**Note:** Term *implementation*, may refer to implementing(dropping defualt one) the POJO(`FIllable_Object`) filler and aprser modules, or as a *wrapper* that implements the *HTTP Server Component* for supporting a specific lib/engine/spec.
+**Note:** Term *implementation*, may refer to implementing(dropping defualt one) the POJO(`Fillable_Object`) filler and a prser modules, or as a *wrapper* that implements the *HTTP Server Component* for supporting a specific lib/engine/spec.
 
 ## Shall I Read Stuffs Ahead?
 You are probably looking for some sample and fast API explination, so if yes(if you are a end-user), then `false`, you don't need to read and understand the content, instead you may also check [WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test) repo, that contains some sample of this lib.
 
-But if you like to implement the lib/API for your(or one) HTTP Server COntainer, or beter would like to contribute, so you are welcome.  
+But if you like to implement the lib/API for your(or one) HTTP Server Container, or beter would like to contribute, so you are welcome.  
+
+## Maven Repository
+This repo now could be grabbed from the central maven repository(thanks sonatype, and apache)  
+
+Considering following dependency, add it to your `pom.xml` maven file  
+```xml
+<dependency>
+  <groupId>com.github.911992</groupId>
+  <artifactId>WAsys_pojo_http_data</artifactId>
+  <version>0.2.0</version>
+</dependency>
+```
+
+*Not a maven project? this project is ant compatible too*  
+*you may also grab artifact(s) from the [central maven repo](https://mvnrepository.com/artifact/com.github.911992/WAsys_pojo_http_data) too.*
+
 
 ## Composition Structure
 ![Composition Structure Diagram](./_docs/diagrams/composite_struct_diagram_partial.svg)  
@@ -54,10 +68,25 @@ As mentioned, default POJO manipulator may or may not be used by **HTTP Server C
 This componenet is actually end-user which needs its POJOs filled. User needs to mark all POJOs fillable, by implementing the `Fillable_Object` or extending it's adapter as `Fillable_Object_Adapter`, or `Poolable_Fillable_Object_Adapter`.  
 
 This component needs an instance of `Request_Data_Handler` which should be provided by **HTTP Server Container** componenet. For example using the Servlet wrapper in a Servlet env, and etc.
-#### WAsys Generic Object Pool (optional)
+#### WAsys Generic Object Pool
 As mentioned, this is recommended to pool POJOs to gain more performance, and better memory managment, however that plain two main interfaces `Fillable_Object`, and `Request_Data_Handler` are not dependent to this componenet, but their adapters `Fillable_Object_Field_Signature`, and `Poolable_Request_Data_Handler_Adapter` are.  
 
+**Note:** Since version **0.2.0**(and earlier), dependency to this module/component is an essential, as the default filler uses a pooled version of context to track filled types.
+
 **Note:** Using `Fillable_Object_Field_Signature`, and `Poolable_Request_Data_Handler_Adapter`will not mark the target types poolable magically, please check out [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) repo for more help.
+
+#### JNDI
+The default filler needs a *maximum pool size*, in order to initialize its internal `Object_Pool`.
+
+It checks the JNDI to check if any valid (which is a decodable number in `String` type) value were registered to the JNDI or not. If it fails(missed/invalid number), then it searches the system properties with the same key.  
+Finally if both failed, the default pool max value will be used.  
+
+Considering following info about JNDI/system-properties look up  
+* **JNDI key name**: `WAsys_Generic_Object_Filler_ARRAYLIST_POOL_MAX` (please refer to `Generic_Object_Filler.ARRAYLIST_POOL_MAX_VAL_LOOKUP_KEY`)
+* **Expected value**: A positive, and decodable number in `String` type/scheme.
+* **Default value**: `8` (please refer to `Generic_Object_Filler.ARRAYLIST_DEFAULT_POOL_MAX_VAL`)
+
+JNDI dependency was added since version **0.2.0**.
 
 ## Class Diagram
 ![Class Diagram](./_docs/diagrams/class_diagram_partial.svg)  
@@ -288,7 +317,11 @@ By default each cache for a type is proceed only once, so it lands at type-level
 You may please check out the Sample7 in [WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test) repo for an instance.
 
 ## Utilizing The Lib
-Add the library to your project classpath, add WAsys_generic_object_pool artifact too(if required).
+Since version **0.2.0**, and later, you may add the project from maven central repo (please check [Maven Repository](#maven-repository) section).
+
+Or you may build the project using ant also, or get the artifacts from maven central repo if your project is not a maven one.
+
+**Note:** Please mind since version **0.2.0** and later, you have to link/add [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) lib too.
   
 Make sure you have the correct **HTTP Server Container** component that completes the impl of the lib(you'd probably need to wait a little longer, so I would give Server wrapper(and a test repo) for the lib)
 
@@ -301,5 +334,6 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 - [x] Documenting the source code(partial, for essential API-level types)
 - [x] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work. (you may find it [here](https://github.com/911992/WAsys_pojo_http_data_test))
 - [x] Servlet 3.0 Wrapper (as [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
-- [ ] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()`
+- [x] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()` (done, using `ArrayList` now, instaed of `Vector`)
+- [x] Maven repo
 

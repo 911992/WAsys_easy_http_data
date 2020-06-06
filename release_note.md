@@ -4,6 +4,55 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.2.0** (Jun 5, 2020)  
+
+0. Artifact now is accessible from **Maven** central repository (wonderful, thanks sonatype, and apache)
+1. Dependency to [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) now is an **essential** now.
+2. Moved all source codes from `src` folder to `src/main/java` to make it as a std maven project
+3. `Source_Code::all`
+    * Reworked, and fixed many issues about javadoc of all source codes
+4. Using non-`synchronized` `ArrayList`, instead of `Vector`(as a `synchronized` list) where thread-safety is not an issue, or already covered by another level in almost all source files.
+5. `Source_Code::Fillable_Object_Parse_Result`
+    * Using `ArrayList`(non thread-safe) instead of `Vector`(as thread-safe) for `fields` attribute/field
+6. `Source_Code::Fillable_Object_Parser`
+    * Using `ArrayList`(non thread-safe) instead of `Vector`(thread-safe), as the `Fillable_Object_Parse_Result` constructor now works/needs the same way
+    * Changed method `find_marked_setter_method(:Class,:String,:Class):Method` signature to `find_marked_setter_method(:Class,:Field):Method`
+7. `Source_Code::Fillable_Object_Signature_Context`
+    * Using `ArrayList`(non thread-safe) instead of `Vector`(thread-safe) for `ctx` field
+8. `Source_Code::Generic_Object_Filler`
+    * Using `ArrayList`(non thread-safe) instead of `Vector`(thread-safe) as thread-safety is not considered, or covered
+    * Using internal pooled version of `ArrayList`(`Poolable_ArrayList`) when a filling is requested for holding filling types in `process_request()`, and `process_request_internal()` methods
+    * Added `ARRAYLIST_POOL_MAX_VAL_LOOKUP_KEY:String`, and `ARRAYLIST_POOL:Object_Pool` `static` fields
+    * Added `static init_arraylist_pool()` method, and a `static` block that calls it during class loading
+    * Renamed method `process_request(:Request_Data_Handler,:Fillable_Object,:ArrayList<Class>):void` to `process_request_internal` (polymorphism is good, but *unique names* are better)
+9. `Source_Code::Fillable_Object`
+    * Changed `arg_success` arg name to `arg_result` of method `set_object_fill_result`
+10. `Source_Code::Fillable_Object_Adapter`
+    * Reseting state of `this` instance will not mark/set the `err_msg` field as `null`, instead sets the length to `zero`.
+11. `Source_Code::Request_Data_Handler_Adapter`
+    * `copy_stream` method now performs a manual streaming (drop for `transferTo` method, since it required java 9+)
+12. Added `package-info.java` file for each packages contains member.
+13. Added `Poolable_ArrayList` class, and its inner class `Factory` to act as a `Poolable_Object` of `ArrayList`
+14. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+    * Updated composition structure diagram (check changes [here](./_docs/diagrams/composite_struct_diagram_release_note.md))
+15. Repo
+    * Added `pom.xml` maven file
+    * Added `README.txt`, and `README.txt` files
+    * Added `target`(as maven output) to `.gitignore`
+    * Updated `README.md` file
+        * Fixed soem typos, and misnamed const vals
+        * Marking the [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) as an **essential requirements**
+        * Removed the note, about optional dependency to [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) repo
+        * Added **Maven Repository** section (hell yeses)
+        * Added **JNDI** section, as new component dependency
+        * Edited the **Utilizing The Lib** section, based on recent changes
+        * Added **Maven repo** as a completed task in TODOs section
+        * All **TODOs** are now marked as completed (awesome)
+    * Added `composite_struct_diagram_release_note.md` file, as a dedicated releas-note for *composition structure diagram*.
+
+<hr/>
+
 **0.1.11** (Jun 1, 2020)  
 
 0. **API Change**: POJO Filler(`Generic_Object_Filler` or any other concreted one) should inform the POJO about a `Stream_To_Field` streaming op, if the io op was ok, or nu by invoking the `Filleble_Object.part_streaming_done()` method.

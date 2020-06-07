@@ -3,6 +3,14 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.2.1** (Jun 8, 2020)
+
+* Fixed the duplicated **`X`** in-page reference.
+    * Named the correct reference to `Pool_Context` as **`Z`**
+* Added missed dependency from `Generic_Object_Filler` to `Pool_Context`
+
+<hr/>
+
 **v0.2** (Jun 5, 2020)
 
 * Updated class `Generic_Object_Filler`

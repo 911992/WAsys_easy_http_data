@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.2 (Jun 5, 2020)  
+Latest: v0.2.1 (July 24, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -39,7 +39,7 @@ Considering following dependency, add it to your `pom.xml` maven file
 <dependency>
   <groupId>com.github.911992</groupId>
   <artifactId>WAsys_pojo_http_data</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 
@@ -109,6 +109,8 @@ A POJO could be introduced by user manually, or get parsed using reflection at r
 Default POJO parser (`Fillable_Object_Parser`) validate the given POJO fingerprint by user.
 
 Please mind since v0.1.6, the default parser parses and prepare the type fingerprint as `parent(s) -to-> child/type` order.
+
+**Note:** since update version `0.2.1` (20200724), any *non* `Field_Definition` annotated field that its name is started using two double-underscore `__` char will be ignored for filling.
 
 ### POJO Caching Policy
 By **default**, a POJO fingerprint should be cached for performance related stuffs, however this policy could be ignored.
@@ -336,4 +338,4 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 - [x] Servlet 3.0 Wrapper (as [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
 - [x] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()` (done, using `ArrayList` now, instaed of `Vector`)
 - [x] Maven repo
-
+- [ ] (*important*) Integrate the lib with [`WAsys_Java_type_util`](https://github.com/911992/WAsys_Java_type_util) for parsing types

@@ -4,6 +4,19 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.2.1** (Jul 24, 2020)
+
+0. New type parsing policy, to ignore any field is started by dobule underscore(`__`), and is not `Field_Definition` annotated.
+1. `Source_Code::Fillable_Object_Parser`
+    * Updated `parse_field` method to support new type policy(above) about ignorring fields started with double-underscore `__` (and are not `Field_Definition`).
+2. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.2.1` now
+    * Updated `README.md`file
+        * Stating new type parsing policy in *POJO Parsing Method* section
+        * Updated maven repo version
+        * Adding new task about [`WAsys_Java_type_util`](https://github.com/911992/WAsys_Java_type_util) and integration in *TODOs* section.
+
 **0.2.0** (Jun 5, 2020)  
 
 0. Artifact now is accessible from **Maven** central repository (wonderful, thanks sonatype, and apache)

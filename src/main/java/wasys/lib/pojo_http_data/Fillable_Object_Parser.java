@@ -10,6 +10,9 @@ Created on: May 13, 2020 10:49:43 PM
     @author https://github.com/911992
  
 History:
+    0.2.1(20200724)
+        • Updated parse_field method to support new type policy about ignorring fields started with double-underscore "__" (and are not Field_Definition).
+
     0.2 (20200605)
         • Added some documentation
         • Using ArrayList(non thread-safe) instead of Vector(thread-safe), as the Fillable_Object_Parse_Result constructor now works the same way
@@ -276,6 +279,9 @@ public class Fillable_Object_Parser {
         Class _ftyp = arg_field.getType();
         Field_Definition _fannot = arg_field.getAnnotation(Field_Definition.class);
         if (_fannot == null) {
+            if(_ftyp.getName().startsWith("__")){
+                return null;
+            }
             return new Fillable_Object_Field_Signature(arg_field.getName(), _ftyp);
         }
         String _param_name = _fannot.param_name();

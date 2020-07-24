@@ -12,7 +12,9 @@ Created on: Jun 1, 2020 17:38:31 PM
     @author https://github.com/911992
  
 History:
-    
+    0.2.1(20200724)
+        • Artifact to version 0.2.1
+        
     initial version: 0.2(20200604)
 
 ]]>-->
@@ -21,7 +23,7 @@ History:
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.911992</groupId>
     <artifactId>WAsys_pojo_http_data</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <packaging>jar</packaging>
     <description>A simple and generic lib, to convert and validate http requests into native java types</description>
     <url>https://github.com/911992/WAsys_pojo_http_data</url>

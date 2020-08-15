@@ -4,6 +4,40 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.2.5** (Aug 13, 2020)
+
+0. Dedicated value bound check/rule for float-point(`float`,`double`) fields when using `Field_Definition` annotation, to avoid loosy float-to-integer conversion for string/stream size, and integer bound checking.
+1. `Source_Code::Fillable_Object_Parser`
+    * Calling related getter of `Field_Definition` based on annotated field's type
+    * Fixes/changes becasue of `Field_Definition` and `Fillable_Object_Field_Signature` types changes
+2. `Source_Code::Generic_Object_Filler`
+    * Fixes/changes becasue of `Field_Definition` and `Fillable_Object_Field_Signature` types changes (err msg generating, and size/len check)
+    * Getting related min/max values of related field signature during value bound/size check
+    * Using `Number` instead of pair of `double`/`long` for keeping a cache of min/max values
+    * `String` value lenght now is checked by `int` value, rather than long
+3. `Source_Code::Fillable_Object_Field_Signature`
+    * Removed `min_len_val` and `max_len_val` fields (and their getter and setters)
+    * Added `min_val:Number`, and `max_val:Number` (with setter and getters funcs)
+    * Updated constructors, to follow the new field changes(above)
+4. `Source_Code::Field_Definition`
+    * Removed `min_len_val` and `max_len_val` fields
+    * Added `min_float_point_val:double`, and `max_float_point_val:double` for double/float related param definitions
+    * Added `min_val_or_len:long` and `max_val_or_len:long` for size/len and integer related fields
+5. `Source_Code::All`
+    * Updated some documentations (including inheriting docs from supertypes where missed)
+6. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+7. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.2.5` now
+    * Updated `README.md`file
+        * Updated maven repo version
+        * Added *Field/Param Definition* section
+        * Added [https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test](WAsys_pojo_http_data_servlet3_wrapper_test) repo link in 
+        * Removed completed TODO tasks in TODOs section
+
+<hr/>
+
 **0.2.1** (Jul 24, 2020)
 
 0. New type parsing policy, to ignore any field is started by dobule underscore(`__`), and is not `Field_Definition` annotated.
@@ -16,6 +50,8 @@ Author: [911992](https://github.com/911992)
         * Stating new type parsing policy in *POJO Parsing Method* section
         * Updated maven repo version
         * Adding new task about [`WAsys_Java_type_util`](https://github.com/911992/WAsys_Java_type_util) and integration in *TODOs* section.
+
+<hr/>
 
 **0.2.0** (Jun 5, 2020)  
 
@@ -79,14 +115,14 @@ Author: [911992](https://github.com/911992)
     * Update `README.md` file
         * Updated "HTTP File(part) Upload Handling" section, explained more about streamable fields.
 
-<br/>
+<hr/>
 
 **0.1.10** (May 31, 2020)  
 
 0. `Source_Code::Generic_Object_Filler`
     * Removed a redundant `if` block, from `process_request()` method
 
-<br/>
+<hr/>
 
 **0.1.9** (May 30, 2020)  
 
@@ -96,7 +132,7 @@ Author: [911992](https://github.com/911992)
         * Added [Servlet 3.0 impl repo link](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper)
         * Marked the *Servlet 3.0 Wrapper* task as completed
 
-<br/>
+<hr/>
 
 **0.1.8** (May 28, 2020)  
 

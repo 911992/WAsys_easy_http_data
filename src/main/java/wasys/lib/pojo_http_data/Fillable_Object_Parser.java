@@ -10,7 +10,11 @@ Created on: May 13, 2020 10:49:43 PM
     @author https://github.com/911992
  
 History:
-    0.2.1(20200724)
+    0.2.5 (20200813)
+        • Calling related getter of Field_Definition based on annotated field's type
+        • Fixes/changes becasue of Field_Definition and Fillable_Object_Field_Signature types changes
+
+    0.2.1 (20200724)
         • Updated parse_field method to support new type policy about ignorring fields started with double-underscore "__" (and are not Field_Definition).
 
     0.2 (20200605)
@@ -18,10 +22,10 @@ History:
         • Using ArrayList(non thread-safe) instead of Vector(thread-safe), as the Fillable_Object_Parse_Result constructor now works the same way
         • Changed method find_marked_setter_method(:Class,:String,:Class):Method signature to find_marked_setter_method(:Class,:Field):Method
 
-    0.1.6(20200525)
+    0.1.6 (20200525)
         • Finding fields in reflection mode as parent-to-child fields order now
 
-    0.1.3(20200521)
+    0.1.3 (20200521)
         • Updated the header(this comment) part
         • Added some javadoc
 
@@ -288,7 +292,16 @@ public class Fillable_Object_Parser {
         if (_param_name == null || _param_name.length() == 0) {
             _param_name = arg_field.getName();
         }
-        return new Fillable_Object_Field_Signature(_param_name, _fannot.param_idx(), arg_field.getName(), _ftyp, _fannot.nullable(), _fannot.min_len_val(), _fannot.max_len_val());
+        Number _min_val;
+        Number _max_val;
+        if(_ftyp == float.class || _ftyp == Float.class || _ftyp == double.class || _ftyp == Double.class){
+            _min_val = _fannot.min_float_point_val();
+            _max_val = _fannot.max_float_point_val();
+        }else{
+            _min_val = _fannot.min_val_or_len();
+            _max_val = _fannot.max_val_or_len();
+        }
+        return new Fillable_Object_Field_Signature(_param_name, _fannot.param_idx(), arg_field.getName(), _ftyp, _fannot.nullable(), _min_val,_max_val);
     }
 
     /**

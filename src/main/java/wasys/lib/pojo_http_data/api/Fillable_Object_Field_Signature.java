@@ -10,6 +10,12 @@ Created on: May 13, 2020 4:02:03 AM
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Removed min_len_val and max_len_val fields (and their getter and setters)
+        • Added min_val:Number, and max_val:Number (with setter and getters funcs)
+        • Updated constructors, to follow the new field changes(above)
+        • Updated the docs!
+
     0.2 (20200605)
         • Updated/fixed documentation
 
@@ -69,35 +75,42 @@ public class Fillable_Object_Field_Signature {
     /**
      * The minimum len or value allowed for the type.
      * <p>For {@link String} type it is used for the literal len</p>
-     * <p>For primitive(numeral) type, it's used for the maximum value allowed</p>
-     * <p>For {@code OutputStream} type, it is used for the file/part len</p>
+     * <p>For primitive(numeral) type, it's used for the maximum value allowed.</p>
+     * <p><b>Note: For each related primite type, related {@code getType} will be called,(e.g. calling {@code getLong} when long is requried.)</b></p>
+     * <p>For {@link OutputStream} type, it is used for the file/part len</p>
+     * <p>
+     * <b>Note:</b> Since 0.2.5, the value is not used for float-point(real) types.
+     * </p>
+     * @since 0.2.5
      */
-    final private double min_len_val;
+    final private Number min_val;
     
     /**
      * The maximum len or value allowed for the type.
      * <p>For {@link String} type it is used for the literal len</p>
      * <p>For primitive(numeral) type, it's used for the minimum value allowed</p>
-     * <p>For {@code OutputStream} type, it is used for the file/part len</p>
+     * <p><b>Note: For each related primite type, related {@code getType} will be called,(e.g. calling {@code getLong} when long is requried.)</b></p>
+     * <p>For {@link OutputStream} type, it is used for the file/part len</p>
+     * <p>
+     * <b>Note:</b> Since 0.2.5, the value is not used for float-point(real) types.
+     * </p>
+     * @since 0.2.5
      */
-    final private double max_len_val;
+    final private Number max_val;
 
     /**
      * Constructor that accepts only essential http param name, and the type.
      * <p>
      * It sets the rest values for the fields as default values.
      * </p>
-     * @param name name of the http parameter
-     * @param type type of the POJO (http data need to be parsed)
+     * <p>
+     * It has no value/size check.
+     * </p>
+     * @param arg_name name of the http parameter
+     * @param arg_type type of the POJO (http data need to be parsed)
      */
-    public Fillable_Object_Field_Signature(String name, Class type) {
-        this.param_name = name;
-        this.type = type;
-        this.entity_field_name = name;
-        param_idx = 0;
-        nullable = false;
-        min_len_val = Double.NEGATIVE_INFINITY;
-        max_len_val = Double.POSITIVE_INFINITY;
+    public Fillable_Object_Field_Signature(String arg_name, Class arg_type) {
+        this(arg_name, 0, arg_name, arg_type, false, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
     }
 
     /**
@@ -105,21 +118,16 @@ public class Fillable_Object_Field_Signature {
      * <p>
      * Needs all data to be set for all fields, except the target pojo field name, where it's the same as http param name.
      * </p>
-     * @param name name of the http parameter
-     * @param param_idx index of the http parameter
-     * @param type type of the pojo field
-     * @param nullable tells if missed data is allowed or not
-     * @param min_len_val the minimum allowed value/size of the parameter data.
-     * @param max_len_val the maximum allowed value/size of the parameter data.
+     * @param arg_name name of the http parameter
+     * @param arg_param_idx index of the http parameter
+     * @param arg_type type of the pojo field
+     * @param arg_nullable tells if missed data is allowed or not
+     * @param arg_min_val the minimum allowed value/size of the parameter data.
+     * @param arg_max_val the maximum allowed value/size of the parameter data.
+     * @since 0.2.5
      */
-    public Fillable_Object_Field_Signature(String name, int param_idx, Class type, boolean nullable, double min_len_val, double max_len_val) {
-        this.param_name = name;
-        this.param_idx = Math.max(0, param_idx);
-        this.entity_field_name = name;
-        this.type = type;
-        this.nullable = nullable;
-        this.min_len_val = Math.min(min_len_val, max_len_val);
-        this.max_len_val = Math.max(min_len_val, max_len_val);
+    public Fillable_Object_Field_Signature(String arg_name, int arg_param_idx, Class arg_type, boolean arg_nullable, Number arg_min_val, Number arg_max_val) {
+        this(arg_name, arg_param_idx, arg_name, arg_type, arg_nullable, arg_min_val, arg_max_val);
     }
 
     /**
@@ -127,22 +135,33 @@ public class Fillable_Object_Field_Signature {
      * <p>
      * Since a http parameter name may not be/treated-as a valid pojo field(e.g. {@code 0email}), so this is possible/essential to specify a pojo field name that is mapped to related param.
      * </p>
-     * @param param_name name of the http parameter
-     * @param param_idx index of the http parameter
-     * @param entity_field_name name of the pojo field that {@code param_name} should be mapped to
-     * @param type type of the pojo field
-     * @param nullable tells if missed data is allowed or not
-     * @param min_len_val the minimum allowed value/size of the parameter data.
-     * @param max_len_val the maximum allowed value/size of the parameter data.
+     * <p>
+     * <b>Note:</b> {@code arg_min_val}, and {@code arg_max_val} are not cloned/copied(ptr reference). Changing associated value might cause undefined behaviors during object filling.<br>
+     * This is suggested to provide a immutable copy(like {@link Long}, {@link Double},...).
+     * </p>
+     * @param arg_param_name name of the http parameter
+     * @param arg_param_idx index of the http parameter
+     * @param arg_entity_field_name name of the pojo field that {@code param_name} should be mapped to
+     * @param arg_type type of the pojo field
+     * @param arg_nullable tells if missed data is allowed or not
+     * @param arg_min_val the minimum allowed value/size(len) of of the parameter data (if {@code null}, then {@code Double.NEGATIVE_INFINITY} will be used).
+     * @param arg_max_val the maximum allowed value/size(len) of of the parameter data (if {@code null}, then {@code Double.POSITIVE_INFINITY} will be used).
+     * @since 0.2.5
      */
-    public Fillable_Object_Field_Signature(String param_name, int param_idx, String entity_field_name, Class type, boolean nullable, double min_len_val, double max_len_val) {
-        this.param_name = param_name;
-        this.param_idx = Math.max(0, param_idx);
-        this.entity_field_name = entity_field_name;
-        this.type = type;
-        this.nullable = nullable;
-        this.min_len_val = min_len_val;
-        this.max_len_val = max_len_val;
+    public Fillable_Object_Field_Signature(String arg_param_name, int arg_param_idx, String arg_entity_field_name, Class arg_type, boolean arg_nullable, Number arg_min_val,Number arg_max_val) {
+        this.param_name = arg_param_name;
+        this.param_idx = Math.max(0,arg_param_idx);
+        this.entity_field_name = arg_entity_field_name;
+        this.type = arg_type;
+        this.nullable = arg_nullable;
+        if(arg_min_val == null){
+            arg_min_val = Double.NEGATIVE_INFINITY;
+        }
+        if(arg_max_val == null){
+            arg_max_val = Double.POSITIVE_INFINITY;
+        }
+        this.min_val = arg_min_val;
+        this.max_val = arg_max_val;
     }
 
     /**
@@ -186,19 +205,19 @@ public class Fillable_Object_Field_Signature {
     }
 
     /**
-     * Getter method for {@code min_len_val}
-     * @return the {@code min_len_val}
+     * Getter method for {@code min_val}
+     * @return the {@code min_val}
      */
-    public double getMin_len_val() {
-        return min_len_val;
+    public Number getMin_val() {
+        return min_val;
     }
 
     /**
-     * Getter method for {@code max_len_val}
-     * @return the {@code max_len_val}
+     * Getter method for {@code max_val}
+     * @return the {@code max_val}
      */
-    public double getMax_len_val() {
-        return max_len_val;
+    public Number getMax_val() {
+        return max_val;
     }
 
 }

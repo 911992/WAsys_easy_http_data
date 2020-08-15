@@ -10,6 +10,9 @@ Created on: Jun 4, 2020 8:38:17 AM
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Documentation fix/update.
+
     initial version: 0.2(20200605)
 */
 
@@ -31,11 +34,17 @@ import wasys.lib.generic_object_pool.api.Poolable_Object;
  */
 public class Poolable_ArrayList extends ArrayList<Class> implements Poolable_Object{
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void post_create() {
         
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void pre_destroy() {
         reset_state();

@@ -3,6 +3,16 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.2.5** (Aug 13, 2020)
+* Removed `min_len_val`, and `max_len_val` from `Field_Definition` type
+    * Added `min_float_point_val:double`, and `max_float_point_val:double` for `double`, and `float` related params. (both `Field_Definition`, and `Fillable_Object_Field_Signature` types)
+    * Added `min_val_or_len:long`, and `max_val_or_len:long` for sizable(like `String`/stream), or integer-based(`int`, `long`, etc...) related params. (both `Field_Definition`, and `Fillable_Object_Field_Signature` types)
+* Removed `min_len_val`, and `max_len_val` from `Fillable_Object_Field_Signature` type
+    * Added `min_val:Number`, and `max_val:Number` fields.
+
+
+<hr/>
+
 **v0.2.1** (Jun 8, 2020)
 
 * Fixed the duplicated **`X`** in-page reference.

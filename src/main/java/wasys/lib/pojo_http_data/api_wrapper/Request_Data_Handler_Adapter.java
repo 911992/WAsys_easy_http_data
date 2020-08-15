@@ -10,6 +10,9 @@ Created on: May 13, 2020 6:33:05 PM | last edit: May 13, 2020
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Documentation fix/update.
+
     0.2 (20200605)
         • Updated/fixed documentation
         • copy_stream method now performs a manual streaming (drop for transferTo method, since it required java 9+)
@@ -53,31 +56,49 @@ public abstract class Request_Data_Handler_Adapter<A> implements Request_Data_Ha
      */
     public static final int DEFAULT_BUFFER_SIZE = 1024;
     
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String get_param(String arg_param) {
         return get_param_at(arg_param, 0);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String get_part_filename(String arg_param) {
         return get_part_filename_at(arg_param, 0);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public String get_part_mime_part(String arg_param) {
         return get_part_mime_part_at(arg_param, 0);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public long get_part_size(String arg_param) {
         return get_part_size_at(arg_param, 0);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public long stream_part(String arg_param, OutputStream arg_out_to) throws IOException {
         return stream_part_at(arg_param, 0, arg_out_to);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public long stream_part_at(String arg_param, int arg_index, OutputStream arg_out_to) throws IOException {
         InputStream _is = get_part_stream_at(arg_param, arg_index);
@@ -87,11 +108,17 @@ public abstract class Request_Data_Handler_Adapter<A> implements Request_Data_Ha
         return copy_stream(_is, arg_out_to);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public InputStream get_part_stream(String arg_param)throws IOException {
         return get_part_stream_at(arg_param, 0);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void fill_object(Fillable_Object arg_object) throws Unfillable_Object_Ex{
         Generic_Object_Filler.process_request(this, arg_object);

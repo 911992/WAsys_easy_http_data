@@ -10,6 +10,9 @@ Created on: May 19, 2020 3:29:19 AM
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Documentation fix/update.
+
     0.2 (20200605)
         • Updated/fixed documentation
 
@@ -66,17 +69,25 @@ public abstract class Poolable_Fillable_Object_Adapter extends Fillable_Object_A
         pool.release_an_instance(this);
     }
     
-
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void post_create() {
         
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void pre_destroy() {
         
     }
     
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void set_pool(Object_Pool arg_pool) {
         this.pool = arg_pool;

@@ -10,6 +10,12 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Fixes/changes becasue of Field_Definition and Fillable_Object_Field_Signature types changes (err msg generating, and size/len check)
+        • Getting related min/max values of related field signature during value bound/size check
+        • Using Number instead of pair of double/long for keeping a cache of min/max values
+        • String value lenght now is checked by int value, rather than long
+
     0.2 (20200605)
         • Added some documentation
         • Using ArrayList(non thread-safe) instead of Vector(thread-safe) as thread-safety is not considered, or covered
@@ -355,13 +361,11 @@ public class Generic_Object_Filler {
         if (_fill_mode == Object_Fill_Mode.Type_Manipulator) {
             _fill_mode = arg_obj.get_type_descriptor().field_set_mode();
         }
-        double _min = _fsig.getMin_len_val();
-        long _minl = (long) _min;
-        double _max = _fsig.getMax_len_val();
-        long _maxl = (long) _max;
+        Number _minv = _fsig.getMin_val();
+        Number _maxv = _fsig.getMax_val();
         if (_type == String.class) {
             set_field_data(arg_obj, arg_field_sig_cache, _data, _fill_mode);
-            if ((_data.length() < _minl) || (_data.length() > _maxl)) {
+            if ((_data.length() < _minv.intValue()) || (_data.length() > _maxv.intValue())) {
                 result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
@@ -375,7 +379,7 @@ public class Generic_Object_Filler {
                 result_event(arg_obj, _fsig, Field_Fill_Result.Failed_IO_Error,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }
-            if (_part_size < _minl || _part_size > _maxl) {
+            if (_part_size < _minv.longValue() || _part_size > _maxv.longValue()) {
                 result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             } else {
@@ -438,7 +442,7 @@ public class Generic_Object_Filler {
                 } else {
                     set_field_data(arg_obj, arg_field_sig_cache, _d, _fill_mode);
                 }
-                if ((_d < _min) || (_d > _max)) {
+                if ((_d < _minv.doubleValue()) || (_d > _maxv.doubleValue())) {
                     result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                     _set_res = FIELD_SET_FAILED;
                 }
@@ -465,7 +469,7 @@ public class Generic_Object_Filler {
                     _out_of_range = false;
                 }
                 set_field_data(arg_obj, arg_field_sig_cache, _lv, _fill_mode);
-                if (_out_of_range || (_l < _minl) || (_l > _maxl)) {
+                if (_out_of_range || (_l < _minv.longValue()) || (_l > _maxv.longValue())) {
                     result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                     _set_res = FIELD_SET_FAILED;
                 }
@@ -552,15 +556,15 @@ public class Generic_Object_Filler {
                 case Failed_Outof_Range: {
                     StringBuilder _r = new StringBuilder("Out of range value(");
                     boolean _need_com = false;
-                    if (arg_fsig.getMin_len_val() > Double.NEGATIVE_INFINITY) {
-                        _r.append("min: ").append(arg_fsig.getMin_len_val());
+                    if (arg_fsig.getMin_val().doubleValue() > Double.NEGATIVE_INFINITY) {
+                        _r.append("min: ").append(arg_fsig.getMin_val().toString());
                         _need_com = true;
                     }
-                    if (arg_fsig.getMax_len_val() < Double.POSITIVE_INFINITY) {
+                    if (arg_fsig.getMax_val().doubleValue() < Double.POSITIVE_INFINITY) {
                         if (_need_com) {
                             _r.append(",");
                         }
-                        _r.append("max: ").append(arg_fsig.getMax_len_val());
+                        _r.append("max: ").append(arg_fsig.getMax_val().toString());
                     }
                     _r.append(')');
                     msg = _r.toString();

@@ -10,6 +10,9 @@ Created on: May 13, 2020 4:30:45 AM
     @author https://github.com/911992
  
 History:
+    0.2.5 (20200813)
+        • Documentation fix/update.
+
     0.2 (20200605)
         • Updated/fixed documentation
         • Reseting state of this instance will not mark the err_msg field as null, instead sets the length to zero.
@@ -194,6 +197,9 @@ public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillab
         return object_field_result;
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void set_object_fill_result(Object_Fill_Result arg_result) {
         this.object_field_result = arg_result;
@@ -211,12 +217,18 @@ public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillab
 
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     final public void set_field_fill_result(String arg_param_name, int arg_idx, Field_Fill_Result arg_result) {
         last_known_failed_fields_fill = (last_known_failed_fields_fill == null) ? arg_result : last_known_failed_fields_fill.set_if_overridable(arg_result);
         set_field_fill_result_child(arg_param_name, arg_idx, arg_result);
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public void set_field_fill_result_err_msg(String arg_param_name, int arg_idx, String[] arg_err_mes) {
         for (int a = 0; a < arg_err_mes.length; a++) {
@@ -225,11 +237,17 @@ public abstract class Fillable_Object_Adapter implements Fillable_Object, Fillab
         }
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public Fillable_Object_Manipulator get_type_descriptor() {
         return this;
     }
 
+    /**
+     * {@inheritDoc }
+     */
     @Override
     public Fillable_Object_Field_Signature[] get_field_signatures() {
         return null;

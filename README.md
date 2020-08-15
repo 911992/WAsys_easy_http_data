@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.2.1 (July 24, 2020)  
+Latest: v0.2.5 (Aug 13, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -39,7 +39,7 @@ Considering following dependency, add it to your `pom.xml` maven file
 <dependency>
   <groupId>com.github.911992</groupId>
   <artifactId>WAsys_pojo_http_data</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.5</version>
 </dependency>
 ```
 
@@ -102,6 +102,31 @@ Here is the list of supported types. Types are considered for filling, any other
 * `String` (being `final` is not allowed)
 * `OutputStream` or inherited types(could be `final`, and `null`)
 * `Fillable_Object` type (could be `final`, but not `null`)
+
+### Field/Param Definition
+Depending on filling mode(`Object_Fill_Mode`), signature of a `Fillable_Object` could be done by default type parser at runtime, or manually by user specification.
+
+If a `Fillable_Object` needs to be presented by user(where `fill_mode()` returns `Object_Fill_Mode.Type_Manipulator`), user need to prepare a list(array) of field signatures(`Fillable_Object_Field_Signature`), to return it as `Fillable_Object_Manipulator` when `get_type_descriptor()` is called by the parser.
+
+Otherwise(by default), a type is analyzed and parsed at runtime using reflection by the parser.
+
+Using `Object_Fill_Mode.Type_Manipulator`, user is able to set all meta-data related of a field, meanwhile this could be done by `Field_Definition` when parsing mode is `Object_Fill_Mode.Reflection_Type_Fields`.
+
+Example:
+```java
+/*mean a parameter named name, as non-null (no size/len check)*/
+private String name;
+
+/*mean http param name is 0_val, should be between 2047(inclusive) and 63(inclusive)*/
+@Field_Definition(param_name = "0_val",max_val_or_len = 2047 , min_val_or_len = 63)
+private int attr_0;
+```
+
+**Note:** by default(when `Object_Fill_Mode.Reflection_Type_Fields` for type parsing), param-names will be idetified by POJO related field-name, as non-`null`, and no bound checking.
+
+**Note:** Since update `0.2.5`, `Field_Definition` has two `max_???`/`min_???` attributes, that `max_float_point_val`, and `min_float_point_val` are *only* for `float`, and `double` fields, and will be *ignored* if the type is something else. Same for `max_val_or_len`, and `min_val_or_len` are for only `String`, `OutputStream`, and integer-based types, and will be ignored for `float`, and `double`.
+
+Also considering check more [samples](#Sample-Usage).
 
 ### POJO Parsing Method
 A POJO could be introduced by user manually, or get parsed using reflection at runtime(default). If User wishes to provide the POJO fingerprint(field signatures), so the result may get validated.  
@@ -331,11 +356,7 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 
 ## Sample Usage
 * **[WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test)** Sample implementation of this lib, for testing purpose(not a real HTTP Server Container!)  
+* **[WAsys_pojo_http_data_servlet3_wrapper_test](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test)** Sample usages based on [WAsys_pojo_http_data_servlet3_wrapper]([WAsys_pojo_http_data_servlet3_wrapper_test](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
 
 ## TODOs
-- [x] Documenting the source code(partial, for essential API-level types)
-- [x] Test sample project that implement a simple/fake `Request_Data_Handler` to check how does `Generic_Object_Filler` work. (you may find it [here](https://github.com/911992/WAsys_pojo_http_data_test))
-- [x] Servlet 3.0 Wrapper (as [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
-- [x] Pooling the `Vector` type that holds the `Fillable_Object` types in `Generic_Object_Filler.process_request()` (done, using `ArrayList` now, instaed of `Vector`)
-- [x] Maven repo
 - [ ] (*important*) Integrate the lib with [`WAsys_Java_type_util`](https://github.com/911992/WAsys_Java_type_util) for parsing types

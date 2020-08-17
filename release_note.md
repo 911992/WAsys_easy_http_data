@@ -4,6 +4,14 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.2.5.1** (Aug 16, 2020)
+0. Repo
+    * Updated `README.md`file
+        * Fixed the link "Servlet 3.0 Wrapper" link in "Implementations" sections
+        * Added Meta section to link related links/stuffs
+
+<hr/>
+
 **0.2.5** (Aug 13, 2020)
 
 0. Dedicated value bound check/rule for float-point(`float`,`double`) fields when using `Field_Definition` annotation, to avoid loosy float-to-integer conversion for string/stream size, and integer bound checking.

@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.2.5 (Aug 13, 2020)  
+Latest: v0.2.5.1 (Aug 16, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -22,7 +22,7 @@ Please refer to [release_note.md](./release_note.md) file
 ## Implementations
 Here is the list of available implementations(and wrapprs), that would make this project run.  
 
-0. Servlet 3.0 Wrapper (repo: [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test)) (support for Servler 3.0 and later)
+0. Servlet 3.0 Wrapper (repo: [WAsys_pojo_http_data_servlet3_wrapper](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper)) (support for Servler 3.0 and later)
 
 **Note:** Term *implementation*, may refer to implementing(dropping defualt one) the POJO(`Fillable_Object`) filler and a prser modules, or as a *wrapper* that implements the *HTTP Server Component* for supporting a specific lib/engine/spec.
 
@@ -357,6 +357,11 @@ Associate the real HTTP request handler to `Request_Data_Handler` (or its adapte
 ## Sample Usage
 * **[WAsys_pojo_http_data_test](https://github.com/911992/WAsys_pojo_http_data_test)** Sample implementation of this lib, for testing purpose(not a real HTTP Server Container!)  
 * **[WAsys_pojo_http_data_servlet3_wrapper_test](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper_test)** Sample usages based on [WAsys_pojo_http_data_servlet3_wrapper]([WAsys_pojo_http_data_servlet3_wrapper_test](https://github.com/911992/WAsys_pojo_http_data_servlet3_wrapper))
+
+## Meta 
+Also considerign following libs/tools may related to this repo
+0. [WAsys_pojo_http_data_entity_tool](https://github.com/911992/WAsys_pojo_http_data_entity_tool) tool to generate `Fillable_Object` (and `Poolable_Object`) entities
+1. [WAsys_Poolable_Object_generator_tool](https://github.com/911992/WAsys_Poolable_Object_generator_tool) tool to generate `Poolable_Object` entities
 
 ## TODOs
 - [ ] (*important*) Integrate the lib with [`WAsys_Java_type_util`](https://github.com/911992/WAsys_Java_type_util) for parsing types

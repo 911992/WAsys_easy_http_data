@@ -3,6 +3,15 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./composite_struct_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.2.9** (Aug 23, 2020)  
+
+* Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.1`
+* Removed `Object_Factory` from *WAsys Generic Object Pool* componenet (as version 0.5.1 of related repo)
+* Added dependent *Type Signature* componenet from `wasys::lib::java_type_util``
+
+<hr/>
+
+
 **v0.2** (Jun 5, 2020)
 
 * Fixed the misnamed `Poolable_Object` as `Object_Pool` in `WAsys Generic Object Pool` component

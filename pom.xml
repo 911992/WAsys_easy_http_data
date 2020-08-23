@@ -12,6 +12,11 @@ Created on: Jun 1, 2020 17:38:31 PM
     @author https://github.com/911992
  
 History:
+    0.2.9 (20200823)
+        • Artifact to version 0.2.9
+        • Updated the dependency of WAsys_simple_generic_object_pool to 0.5.1
+        • Added WAsys_Java_type_util dependency with version 0.1.7
+        
     0.2.5 (20200813)
         • Artifact to version 0.2.5
         
@@ -26,7 +31,7 @@ History:
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.911992</groupId>
     <artifactId>WAsys_pojo_http_data</artifactId>
-    <version>0.2.5</version>
+    <version>0.2.9</version>
     <packaging>jar</packaging>
     <description>A simple and generic lib, to convert and validate http requests into native java types</description>
     <url>https://github.com/911992/WAsys_pojo_http_data</url>
@@ -48,8 +53,13 @@ History:
     <dependencies>
         <dependency>
             <groupId>com.github.911992</groupId>
+            <artifactId>WAsys_Java_type_util</artifactId>
+            <version>0.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.911992</groupId>
             <artifactId>WAsys_simple_generic_object_pool</artifactId>
-            <version>0.4.7</version>
+            <version>0.5.1</version>
         </dependency>
     </dependencies>
   

@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.2.9 (20200823)
+        • Changed ARRAYLIST_DEFAULT_POOL_MAX_VAL to 1
+
     0.2.5 (20200813)
         • Fixes/changes becasue of Field_Definition and Fillable_Object_Field_Signature types changes (err msg generating, and size/len check)
         • Getting related min/max values of related field signature during value bound/size check
@@ -134,7 +137,7 @@ public class Generic_Object_Filler {
      * </p>
      * @since 0.2
      */
-    final private static int ARRAYLIST_DEFAULT_POOL_MAX_VAL = 8;
+    final private static int ARRAYLIST_DEFAULT_POOL_MAX_VAL = 1;
     
     /**
      * The pool, that handles {@link Poolable_ArrayList} pooled array lists.

@@ -10,14 +10,16 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.2.5.1 (Aug 16, 2020)  
+Latest: v0.2.9 (Aug 23, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
 ## Requirments
 0. Java 1.8  
 1. A HTTP Server Container (component)
-2. [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) (a simple object pooling implementation)
+2. [WAsys_Java_type_util](https://github.com/911992/WAsys_Java_type_util)
+3. [WAsys_generic_object_pool](https://github.com/911992/WAsys_simple_generic_object_pool) (a simple object pooling implementation)
+
 
 ## Implementations
 Here is the list of available implementations(and wrapprs), that would make this project run.  
@@ -39,7 +41,7 @@ Considering following dependency, add it to your `pom.xml` maven file
 <dependency>
   <groupId>com.github.911992</groupId>
   <artifactId>WAsys_pojo_http_data</artifactId>
-  <version>0.2.5</version>
+  <version>0.2.9</version>
 </dependency>
 ```
 

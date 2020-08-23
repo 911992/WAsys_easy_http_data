@@ -4,6 +4,27 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.2.9** (Aug 23, 2020)
+0. Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.1`
+1. Repo now depends on [WAsys_Java_type_util](https://github.com/911992/WAsys_Java_type_util)
+2. `Source_Code::Generic_Object_Filler`
+    * Changed `ARRAYLIST_DEFAULT_POOL_MAX_VAL` to `1`
+3. `Source_Code::Poolable_ArrayList`
+    * API sync with `WAsys_simple_generic_object_pool` v0.5.1 changes
+    * Changed `wasys.lib.generic_object_pool.api.Object_Factory` to `wasys.lib.java_type_util.reflect.type_sig.Object_Factory`
+4. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+    * Updated composite structure diagram (check changes [here](./_docs/diagrams/composite_struct_diagram_release_note.md))
+0. Repo
+    * Updated `README.md`file
+        * Added `WAsys_Java_type_util` as requirements
+    * Updated `pom.xml` file
+        * Artifact to version `0.2.9`
+        * Updated the dependency of `WAsys_simple_generic_object_pool` to `0.5.1`
+        * Added `WAsys_Java_type_util` dependency with version `0.1.7`
+
+<hr/>
+
 **0.2.5.1** (Aug 16, 2020)
 0. Repo
     * Updated `README.md`file

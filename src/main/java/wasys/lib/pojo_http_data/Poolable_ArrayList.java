@@ -10,6 +10,10 @@ Created on: Jun 4, 2020 8:38:17 AM
     @author https://github.com/911992
  
 History:
+    0.2.9 (20200823)
+        • API sync with WAsys_simple_generic_object_pool v0.5.1 changes
+        • Changed wasys.lib.generic_object_pool.api.Object_Factory to wasys.lib.java_type_util.reflect.type_sig.Object_Factory
+
     0.2.5 (20200813)
         • Documentation fix/update.
 
@@ -20,8 +24,8 @@ package wasys.lib.pojo_http_data;
 
 import java.util.ArrayList;
 import wasys.lib.generic_object_pool.Object_Pool;
-import wasys.lib.generic_object_pool.api.Object_Factory;
 import wasys.lib.generic_object_pool.api.Poolable_Object;
+import wasys.lib.java_type_util.reflect.type_sig.Object_Factory;
 
 
 /**
@@ -82,14 +86,14 @@ public class Poolable_ArrayList extends ArrayList<Class> implements Poolable_Obj
      * Simply implements {@code Object_Factory} type as needed for the target {@link Object_Pool}.
      * </p>
      */
-    public static class Factory implements Object_Factory{
+    public static class Factory implements Object_Factory<Poolable_ArrayList>{
 
         /**
          * 
          * @return An empty {@link Poolable_ArrayList}, with default capacity/state.
          */
         @Override
-        public Poolable_Object create_object() {
+        public Poolable_ArrayList create_object(Class arg_type) {
             return new Poolable_ArrayList();
         }
         

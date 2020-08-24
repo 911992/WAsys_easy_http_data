@@ -41,7 +41,7 @@ Considering following dependency, add it to your `pom.xml` maven file
 <dependency>
   <groupId>com.github.911992</groupId>
   <artifactId>WAsys_pojo_http_data</artifactId>
-  <version>0.2.9</version>
+  <version>0.3.1</version>
 </dependency>
 ```
 

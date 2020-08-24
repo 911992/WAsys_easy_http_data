@@ -4,7 +4,19 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.3.1** (Aug 24, 2020)
+
+0. `(╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ `
+1. `Source_Code::Fillable_Object_Field_Signature`
+    * Fixed an issue(very stupid by me!) where default max value is set to negative-infinity (WTF!) `(－‸ლ)`
+2. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.3.1`
+
+<hr/>
+
 **0.2.9** (Aug 23, 2020)
+
 0. Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.1`
 1. Repo now depends on [WAsys_Java_type_util](https://github.com/911992/WAsys_Java_type_util)
 2. `Source_Code::Generic_Object_Filler`

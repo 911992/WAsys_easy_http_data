@@ -10,6 +10,10 @@ Created on: May 13, 2020 4:02:03 AM
     @author https://github.com/911992
  
 History:
+    0.3.1 (20200824)
+        • (╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ 
+        • Fixed an issue(very stupid by me!) where default max value is set to negative-infinity (WTF!) (－‸ლ)
+
     0.2.5 (20200813)
         • Removed min_len_val and max_len_val fields (and their getter and setters)
         • Added min_val:Number, and max_val:Number (with setter and getters funcs)
@@ -110,7 +114,7 @@ public class Fillable_Object_Field_Signature {
      * @param arg_type type of the POJO (http data need to be parsed)
      */
     public Fillable_Object_Field_Signature(String arg_name, Class arg_type) {
-        this(arg_name, 0, arg_name, arg_type, false, Double.NEGATIVE_INFINITY, Double.NEGATIVE_INFINITY);
+        this(arg_name, 0, arg_name, arg_type, false, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
     }
 
     /**

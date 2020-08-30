@@ -4,6 +4,25 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.3.3** (Aug 29, 2020)
+
+0. Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.7`
+1. `Source_Code::Generic_Object_Filler`
+    * Removed import of `Pool_Context`(since it's no more)
+    * Creating the pooled internal array-list by `Generic_Object_Pool` 
+2. `Source_Code::Fillable_Object_Parser`
+    * Small documentation fix
+3. `Source_Code::Fillable_Object_Field_Signature`
+    * Small documentation fix
+4. Diagrams
+    * Updated class diagram (check changes [here](./_docs/diagrams/class_diagram_version_history.md))
+5. Repo
+    * Updated `pom.xml` file
+        * Added copyright literal for generated javadoc(plugin)
+        * Artifact to version `0.3.3`
+
+<hr/>
+
 **0.3.1** (Aug 24, 2020)
 
 0. `(╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ `

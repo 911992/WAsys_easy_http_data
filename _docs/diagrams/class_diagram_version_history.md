@@ -3,6 +3,14 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 file: [class_diagram](./class_diagram.svg)  
 Author: [911992](https://github.com/911992)  
 
+**v0.3.3** (Aug 9, 2020)  
+
+* Removed redundant `Poolable_Object_Adapter` from *WAsys Generic Object Pool* component (wtf was that? `(╯°□°)╯︵ ┻━┻`)
+* Removed `Pool_Context` from *WAsys Generic Object Pool* sincei t's no more
+* Added `Generic_Object_Pool` type and it's dependency from `Generic_Object_Filler` (`Z` ref)
+
+<hr/>
+
 **v0.2.9** (Aug 23, 2020)  
 
 * Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.1`

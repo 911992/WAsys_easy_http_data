@@ -10,6 +10,9 @@ Created on: May 13, 2020 4:02:03 AM
     @author https://github.com/911992
  
 History:
+    0.3.3 (20200829)
+        • Small documentation fix
+
     0.3.1 (20200824)
         • (╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ 
         • Fixed an issue(very stupid by me!) where default max value is set to negative-infinity (WTF!) (－‸ლ)
@@ -62,7 +65,7 @@ public class Fillable_Object_Field_Signature {
     
     /**
      * the type of the field should be considered/decoded.
-     * <p>Supported types are listed as below<p/>
+     * <p>Supported types are listed as below</p>
      * <ul>
      * <li>Primitive types and their wrappers, except for boolean, and char.</li>
      * <li>Any {@link OutputStream} assignable(inherited) type(for part/file upload)</li>

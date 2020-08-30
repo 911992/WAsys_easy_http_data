@@ -10,6 +10,10 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.3.3 (20200829)
+        • Removed import of Pool_Context(since it's no more)
+        • Creating the pooled internal array-list by Generic_Object_Pool
+
     0.2.9 (20200823)
         • Changed ARRAYLIST_DEFAULT_POOL_MAX_VAL to 1
 
@@ -64,9 +68,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import javax.naming.InitialContext;
 import wasys.lib.generic_object_pool.Full_Pool_Object_Creation_Policy;
+import wasys.lib.generic_object_pool.Generic_Object_Pool;
 import wasys.lib.generic_object_pool.Generic_Object_Pool_Policy;
 import wasys.lib.generic_object_pool.Object_Pool;
-import wasys.lib.generic_object_pool.Pool_Context;
 import wasys.lib.pojo_http_data.api.Field_Fill_Result;
 import wasys.lib.pojo_http_data.api.Fillable_Object;
 import wasys.lib.pojo_http_data.api.Fillable_Object_Field_Signature;
@@ -209,7 +213,7 @@ public class Generic_Object_Filler {
             _max_val = ARRAYLIST_DEFAULT_POOL_MAX_VAL;
         }
         Generic_Object_Pool_Policy _pol = new Generic_Object_Pool_Policy(0, _max_val, Full_Pool_Object_Creation_Policy.Create_New_No_Pooling);
-        ARRAY_LIST_POOL = Pool_Context.get_insatcne().get_pool_unregistered_synced(new Poolable_ArrayList.Factory(), _pol);
+        ARRAY_LIST_POOL = Generic_Object_Pool.new_pool_instance(new Poolable_ArrayList.Factory(), _pol);
     }
 
     /**

@@ -10,6 +10,9 @@ Created on: May 13, 2020 10:49:43 PM
     @author https://github.com/911992
  
 History:
+    0.3.3 (20200829)
+        • Small documentation fix
+
     0.2.5 (20200813)
         • Calling related getter of Field_Definition based on annotated field's type
         • Fixes/changes becasue of Field_Definition and Fillable_Object_Field_Signature types changes
@@ -306,7 +309,7 @@ public class Fillable_Object_Parser {
 
     /**
      * Tries to find the setter method for a field.
-     *<p>
+     * <p>
      * A setter method could be defined for the field either implicitly, or explicitly.
      * </p>
      * <p>
@@ -314,12 +317,12 @@ public class Fillable_Object_Parser {
      * </p>
      * <p>
      * Please considering following steps are taken to find a setter method for the field, if the first one fails, it goes for second and so on.
+     * </p>
      * <ol>
      * <li>Method name that defined by {@link Field_Definition}, and exist, and comes with correct signature.</li>
-     * <li>Method name that that annotated by {@link Field_Setter_Method}, and name equals to the field name(<b>NOTE:</b> field name, not param name), and comes with a correct signature.</li>
+     * <li>Method name that that annotated by {@link Field_Setter_Method}, and name equals to the field name (<b>NOTE:</b> field name, not param name), and comes with a correct signature.</li>
      * <li>Method name that comes with java std common name as {@code setAaa}, where {@code aaa} is the name of the field, and comes with correct signature.</li>
      * </ol>
-     * </p>
      * <p>
      * If there is no any setter method, the field still be able to get filled, by direct/explicit field accessing using its reflected pointer.
      * </p>

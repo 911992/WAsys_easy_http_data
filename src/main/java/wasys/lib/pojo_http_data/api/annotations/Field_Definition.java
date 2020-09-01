@@ -10,6 +10,10 @@ Created on: May 13, 2020 3:20:13 PM
     @author https://github.com/911992
  
 History:
+    0.3.5 (20200901)
+        • (╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ 
+        • Fixed an issue(very stupid by me!) where default max_val_or_len value is set to min(instead of max) (WTF!) (－‸ლ)
+
     0.2.5 (20200813)
         • Removed min_len_val and max_len_val fields
         • Added min_float_point_val:double, and max_float_point_val:double for double/float related param definitions
@@ -96,7 +100,7 @@ public @interface Field_Definition {
      * @since 0.2.5
      * @return the maximum value/size allowed for integer-based/sizable type
      */
-    public long max_val_or_len() default Long.MIN_VALUE;
+    public long max_val_or_len() default Long.MAX_VALUE;
     
     /**
      * Specifies the minimum real-precision value is allowed for the {@code double}, or {@code float} type/param(after decoding).

@@ -4,6 +4,18 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.3.5** (Sept 1, 2020)
+
+0. Similar fix related to `0.3.1` (I'm a true damn stupid!)
+1. `(╯ಠ_ಠ)╯︵ ┻━┻ (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻  (╯ಠ_ಠ)╯︵ ┻━┻ `
+2. `Source_Code::Field_Definition`
+    * Fixed an issue(very stupid by me!) where default `max_val_or_len` value is set to min(instead of max) (WTF!) `(－‸ლ)`
+3. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.3.5`
+
+<hr/>
+
 **0.3.3** (Aug 29, 2020)
 
 0. Changes related to `WAsys_simple_generic_object_pool` API change version `0.5.7`

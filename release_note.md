@@ -4,6 +4,16 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.3.9** (Sept 9, 2020)
+
+0. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.3.9`
+        * Updated the dependency of `WAsys_simple_generic_object_pool` to `0.5.9`
+        * Updated the dependency of `WAsys_Java_type_util` to `0.1.9`
+
+<hr/>
+
 **0.3.5** (Sept 1, 2020)
 
 0. Similar fix related to `0.3.1` (I'm a true damn stupid!)

@@ -10,7 +10,7 @@ Simply, it **ease** the way for grabbing data from HTTP level, into java type le
 *diagram 0: social media vector*
 
 ## Revision History
-Latest: v0.3.5 (Sept 1, 2020)  
+Latest: v0.3.9 (Sept 9, 2020)  
 
 Please refer to [release_note.md](./release_note.md) file  
 
@@ -41,7 +41,7 @@ Considering following dependency, add it to your `pom.xml` maven file
 <dependency>
   <groupId>com.github.911992</groupId>
   <artifactId>WAsys_pojo_http_data</artifactId>
-  <version>0.3.5</version>
+  <version>0.3.9</version>
 </dependency>
 ```
 

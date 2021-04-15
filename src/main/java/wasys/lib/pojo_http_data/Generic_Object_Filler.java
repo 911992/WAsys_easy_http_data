@@ -10,6 +10,10 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.4.0 (20210414)
+        • Fixed the issue of unexpected string out of range error related to multiparted requests
+        • Changed long to int cast and check into int to long in read_and_set_param() function
+
     0.3.3 (20200829)
         • Removed import of Pool_Context(since it's no more)
         • Creating the pooled internal array-list by Generic_Object_Pool
@@ -372,7 +376,7 @@ public class Generic_Object_Filler {
         Number _maxv = _fsig.getMax_val();
         if (_type == String.class) {
             set_field_data(arg_obj, arg_field_sig_cache, _data, _fill_mode);
-            if ((_data.length() < _minv.intValue()) || (_data.length() > _maxv.intValue())) {
+            if ((((long)_data.length()) < _minv.longValue()) || (((long)_data.length()) > _maxv.longValue())) {
                 result_event(arg_obj, _fsig, Field_Fill_Result.Failed_Outof_Range,arg_gen_err_msg);
                 _set_res = FIELD_SET_FAILED;
             }

@@ -4,6 +4,17 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.4.0** (Apr 14, 2021)
+
+0. Fixed the issue were string param(field) length check for multipart request produces unexpected *out of range* error.
+1. `Source_Code::Generic_Object_Filler`
+    * Changed `long` to `int` cast and check into `int` to `long` in `read_and_set_param()` function
+2. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.4.0`
+
+<hr/>
+
 **0.3.9** (Sept 9, 2020)
 
 0. Repo

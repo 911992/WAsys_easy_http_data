@@ -4,6 +4,17 @@ repo: https://github.com/911992/WAsys_pojo_http_data
 Author: [911992](https://github.com/911992)  
 *(NOTE: following list carries mentionable(not all) changes. For detailed changes, check source code(s))*  
 
+**0.4.1** (Apr 19, 2021)
+
+0. Fixed the issue(very rare/hard to produce) about hybrid-like POJO/Entities are being filled from a non-multiparted request
+1. `Source_Code::Generic_Object_Filler`
+    * The request multipart flag is checked before ask to grab a stream field needs to be proceed(filled)
+2. Repo
+    * Updated `pom.xml` file
+        * Artifact to version `0.4.1`
+
+<hr/>
+
 **0.4.0** (Apr 14, 2021)
 
 0. Fixed the issue were string param(field) length check for multipart request produces unexpected *out of range* error.

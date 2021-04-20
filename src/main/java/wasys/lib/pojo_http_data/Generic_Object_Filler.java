@@ -10,6 +10,9 @@ Created on: May 14, 2020 5:04:45 PM
     @author https://github.com/911992
  
 History:
+    0.4.1 (20210419)
+        • Fixed the problem where non-multiparted request treated as multiparted one
+
     0.4.0 (20210414)
         • Fixed the issue of unexpected string out of range error related to multiparted requests
         • Changed long to int cast and check into int to long in read_and_set_param() function
@@ -351,12 +354,15 @@ public class Generic_Object_Filler {
         String _data;
         long _part_size = -1;
         boolean _data_null = false;
+        boolean _multiparted = arg_data_handler.is_multipart_request();
         if (OutputStream.class.isAssignableFrom(_type) == false ) {
             _data = arg_data_handler.get_param_at(_param_name, _param_idx);
             _data_null = (_data == null);
         }else{
             _data = null;
-            _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
+            if(_multiparted){
+                _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
+            }
             _data_null = (_part_size == -1);
         }
         if( _data_null ){
@@ -383,7 +389,7 @@ public class Generic_Object_Filler {
         } else if (OutputStream.class.isAssignableFrom(_type)) {
             String _part_name = arg_data_handler.get_part_filename_at(_param_name, _param_idx);
             String _part_mime = arg_data_handler.get_part_mime_part_at(_param_name, _param_idx);
-            if (_part_size == -1) {
+            if (_multiparted && _part_size == -1) {
                 _part_size = arg_data_handler.get_part_size_at(_param_name, _param_idx);
             }
             if (_part_size == -1) {
